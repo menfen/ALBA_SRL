@@ -49,17 +49,17 @@
       background-color: #ffffff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    .tab {
-      flex: 1;
-      padding: 14px 16px;
-      cursor: pointer;
-      background-color: #ffffff;
-      border: none;
-      text-align: center;
-      font-size: 1rem;
-      color: #a9a9a9;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
+      .tab {
+          flex: 1;
+          padding: 14px 16px;
+          cursor: pointer;
+          border: none;
+          text-align: center;
+          font-size: 1rem;
+          color: #a9a9a9;
+          transition: color 0.3s ease, border-bottom 0.3s ease;
+          background: none;
+      }
     .tab:hover {
       background-color: rgba(216,125,74,0.1);
       color: #d87d4a;
@@ -132,106 +132,269 @@
       padding: 1rem;
       font-size: 0.8rem;
     }
+    .carousel-container {
+        width: 1000px;
+        height: 600px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 8px;
+        position: relative;
+    }
+
+    .carousel {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .slides {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+        flex: 0 0 100%;
+        height: 100%;
+        position: relative;
+        scroll-snap-align: start;
+    }
+
+    .slide .bg-blur {
+        display: none; /* Not needed for fixed-size version, remove or hide */
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Use "contain" instead if you want the entire image to be visible without cropping */
+        display: block;
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- Header with clickable logo -->
-  <header>
-    <div>
-      <a href="#" id="logo-link">
-        <img src="C:/Users/hatre/Downloads/Abla%20s.r.l%20(1).png" alt="Company Logo" />
-      </a>
-      <p class="slogan">Your Trusted Renovation Partner</p>
+    <!-- Header with clickable logo -->
+    <header>
+        <div>
+            <a href="#" id="logo-link">
+                <img src="C:/Users/hatre/Downloads/Abla%20s.r.l%20(1).png" alt="Company Logo" />
+            </a>
+            <p class="slogan">Your Trusted Renovation Partner</p>
+        </div>
+        <h1>Alba S.r.l</h1>
+    </header>
+
+    <!-- Tabs -->
+    <div class="tab-container">
+        <button class="tab active" data-tab="home">Home</button>
+        <button class="tab" data-tab="exterior">Exterior</button>
+        <button class="tab" data-tab="interior">Interior</button>
+        <button class="tab" data-tab="partners">Partners</button>
+        <button class="tab" data-tab="contact">Contact Us</button>
     </div>
-    <h1>Alba S.r.l</h1>
-  </header>
 
-  <!-- Tabs -->
-  <div class="tab-container">
-    <button class="tab active" data-tab="home">Home</button>
-    <button class="tab" data-tab="exterior">Exterior</button>
-    <button class="tab" data-tab="interior">Interior</button>
-    <button class="tab" data-tab="partners">Partners</button>
-    <button class="tab" data-tab="contact">Contact Us</button>
-  </div>
+    <!-- Tab contents -->
+    <div id="home" class="tab-content active">
+        <!-- Carousel -->
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="assets/images/Overview.png" alt="Project 1">
+                    </div>
+                    <div class="slide">
+                        <img src="assets/images/Painting%20outside.png" alt="Project 2">
+                    </div>
+                    <div class="slide">
+                        <img src="assets/images/Roof%20Isolation.png" alt="Project 3">
+                    </div>
+                </div>
+                <!-- Navigation buttons -->
+                <button class="prev">&#10094;</button>
+                <button class="next">&#10095;</button>
 
-  <!-- Tab contents -->
-  <div id="home" class="tab-content active">
-    <!-- Carousel only in Home -->
-    <div class="carousel">
-      <div class="slides">
-        <div class="slide">
-          <div class="bg-blur" style="background-image:url('C:/Users/hatre/Downloads/.../1.jpg');"></div>
-          <img src="C:/Users/hatre/Downloads/.../1.jpg" alt="Project 1">
+                <!-- Indicators -->
+                <div class="indicators">
+                    <span class="dot" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                </div>
+            </div>
         </div>
-        <div class="slide">
-          <div class="bg-blur" style="background-image:url('C:/Users/hatre/Downloads/.../5.jpg');"></div>
-          <img src="C:/Users/hatre/Downloads/.../5.jpg" alt="Project 2">
-        </div>
-        <div class="slide">
-          <div class="bg-blur" style="background-image:url('C:/Users/hatre/Downloads/.../6.jpg');"></div>
-          <img src="C:/Users/hatre/Downloads/.../6.jpg" alt="Project 3">
-        </div>
-      </div>
+
     </div>
-    <h2 style="color:#3a3a3a;">First impression for the user</h2>
-    <p>Overview and pictures about the company.</p>
-  </div>
-  <div id="exterior" class="tab-content">
-    <h2 style="color:#3a3a3a;">Exterior Projects</h2>
-    <p>Details about facade and external renovation work.</p>
-  </div>
-  <div id="interior" class="tab-content">
-    <h2 style="color:#3a3a3a;">Interior Projects</h2>
-    <p>Details about interiors, floorings, and finishes.</p>
-  </div>
-  <div id="partners" class="tab-content">
-    <h2 style="color:#3a3a3a;">Our Partners</h2>
-    <p>Commercial and industrial collaborators.</p>
-  </div>
-  <div id="contact" class="tab-content">
-    <h2 style="color:#3a3a3a;">Contact Us</h2>
-    <p>Email: info@example.com<br>Phone: +39 000 000 000</p>
-  </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>Contact Us | Phone: +39 000 000 000 | Email: info@example.com</p>
-  </footer>
+        <!-- Section 1: Mission -->
+        <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+            <h2 style="color: #d87d4a;">Craftsmanship Meets Innovation</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                <div style="flex: 1;">
+                    <p>
+                        At Alba S.r.l, we bring together tradition and modern building techniques to deliver sustainable, visually stunning renovation solutions.
+                        Our strength lies in our detail-oriented execution and commitment to client satisfaction.
+                    </p>
+                </div>
+                <img src="C:\Users\hatre\OneDrive\Documents\GitHub\ALBA_SRL\assets\images\Plumber.png" alt="Craftsmanship" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+            </div>
+        </section>
 
-  <!-- JavaScript -->
-  <script>
-    const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.tab-content');
-    function activateTab(name) {
-      tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
-      contents.forEach(c => c.classList.toggle('active', c.id === name));
-    }
-    tabs.forEach(tab => tab.addEventListener('click', () => activateTab(tab.dataset.tab)));
-    document.getElementById('logo-link').addEventListener('click', e => { e.preventDefault(); activateTab('home'); });
-    
-    // Auto-slide only if on Home
-    let interval;
-    function startCarousel() {
-      const slides = document.querySelector('.slides');
-      const count = document.querySelectorAll('.slide').length;
-      let idx = 0;
-      interval = setInterval(() => {
-        idx = (idx + 1) % count;
-        slides.style.transform = `translateX(-${idx * 100}vw)`;
-      }, 4000);
-    }
-    function stopCarousel() {
-      clearInterval(interval);
-    }
-    // Manage carousel on tab change
-    tabs.forEach(tab => tab.addEventListener('click', () => {
-      if (tab.dataset.tab === 'home') startCarousel(); else stopCarousel();
-    }));
-    // Start on load
-    startCarousel();
-  </script>
+        <!-- Section 2: Quality Assurance -->
+        <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+            <h2 style="color: #d87d4a;">Certified Quality & Materials</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                <div style="flex: 1;">
+                    <p>
+                        We only work with certified materials and suppliers. Each project is built to last, with quality assurance processes
+                        embedded at every phase—from planning to finishing.
+                    </p>
+                </div>
+                <img src="C:\Users\hatre\OneDrive\Documents\GitHub\ALBA_SRL\assets\images\Overview.png" alt="Quality Inspection" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+            </div>
+        </section>
+
+        <!-- Section 3: Focus on Businesses -->
+        <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+            <h2 style="color: #d87d4a;">Tailored Solutions for Businesses</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                <div style="flex: 1;">
+                    <p>
+                        Whether it’s a boutique storefront, a corporate headquarters, or a hospitality venue,
+                        we understand the unique needs of commercial spaces. Our tailored solutions reduce downtime and ensure operational continuity.
+                    </p>
+                </div>
+                <img src="C:\Users\hatre\OneDrive\Documents\GitHub\ALBA_SRL\assets\images\Extrior 1.png" alt="Commercial Services" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+            </div>
+        </section>
+
+        <!-- Section 4: Nationwide Reach -->
+        <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+            <h2 style="color: #d87d4a;">Serving All of Italy</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                <div style="flex: 1;">
+                    <p>
+                        Based in Milan, Alba S.r.l delivers renovation excellence across the country.
+                        Our network of trusted professionals allows us to serve clients in every region with the same dedication and expertise.
+                    </p>
+                </div>
+                <img src="C:\Users\hatre\OneDrive\Documents\GitHub\ALBA_SRL\assets\images\Extrior 2.png" alt="Nationwide Operations" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+            </div>
+        </section>
+    </div>
+
+    <div id="exterior" class="tab-content">
+        <h2 style="color:#3a3a3a;">Façade and Exterior Renovation</h2>
+        <p>
+            Alba S.r.l offers comprehensive exterior renovation services for commercial and residential buildings.
+            We specialize in:
+        </p>
+        <ul>
+            <li>Façade restoration and painting</li>
+            <li>Thermal insulation systems (cappotto termico)</li>
+            <li>Waterproofing and roof maintenance</li>
+            <li>Concrete repair and structural recovery</li>
+        </ul>
+        <p>
+            Our team ensures that every exterior project enhances the building’s visual appeal while increasing its energy efficiency and compliance with local building standards.
+        </p>
+        <!-- [SPACE FOR EXTERIOR PROJECT IMAGES] -->
+
+    </div>
+    <div id="interior" class="tab-content">
+        <h2 style="color:#3a3a3a;">Interior Renovation and Fit-Outs</h2>
+        <p>
+            From initial concept to final finish, Alba S.r.l transforms interior spaces with meticulous attention to detail.
+            Our services include:
+        </p>
+        <ul>
+            <li>Complete interior renovation</li>
+            <li>Flooring installation (tiles, wood, resin)</li>
+            <li>Drywall, false ceilings, and acoustic solutions</li>
+            <li>Painting, lighting, and interior design coordination</li>
+        </ul>
+        <p>
+            We help businesses and property owners reimagine their interiors into modern, functional, and welcoming spaces.
+        </p>
+        <!-- [SPACE FOR INTERIOR PROJECT IMAGES] -->
+
+    </div>
+    <div id="partners" class="tab-content">
+        <h2 style="color:#3a3a3a;">Our Partners and Clients</h2>
+        <p>
+            Alba S.r.l collaborates with leading architectural studios, real estate developers, and commercial clients across Italy.
+            We pride ourselves on long-term partnerships built on transparency, reliability, and mutual growth.
+        </p>
+        <p>
+            We have contributed to:
+        </p>
+        <ul>
+            <li>Corporate office refurbishments</li>
+            <li>Retail space upgrades</li>
+            <li>Hospitality renovations</li>
+            <li>Public infrastructure maintenance</li>
+        </ul>
+        <p>
+            Join our network of trusted collaborators.
+        </p>
+        <!-- [SPACE FOR LOGOS OR PHOTOS WITH PARTNERS] -->
+
+    </div>
+    <div id="contact" class="tab-content">
+        <h2 style="color:#3a3a3a;">Get in Touch</h2>
+        <p>
+            Interested in working with Alba S.r.l or requesting a free consultation? We’re happy to assist you.
+        </p>
+        <ul>
+            <li><strong>Email:</strong> info@albasrl.it</li>
+            <li><strong>Phone:</strong> +39 345 678 9012</li>
+            <li><strong>Address:</strong> Via delle Costruzioni, 10 - 20100 Milano (MI)</li>
+        </ul>
+        <p>
+            Or simply fill out the form below, and our team will get back to you within 24 hours.
+        </p>
+        <!-- [SPACE FOR EMBEDDED FORM OR MAP IMAGE] -->
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact Us | Phone: +39 000 000 000 | Email: info@example.com</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.tab-content');
+        function activateTab(name) {
+            tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+            contents.forEach(c => c.classList.toggle('active', c.id === name));
+        }
+        tabs.forEach(tab => tab.addEventListener('click', () => activateTab(tab.dataset.tab)));
+        document.getElementById('logo-link').addEventListener('click', e => { e.preventDefault(); activateTab('home'); });
+
+        // Auto-slide only if on Home
+        let interval;
+        function startCarousel() {
+            const slides = document.querySelector('.slides');
+            const count = document.querySelectorAll('.slide').length;
+            let idx = 0;
+            interval = setInterval(() => {
+                idx = (idx + 1) % count;
+                slides.style.transform = `translateX(-${idx * 100}vw)`;
+            }, 4000);
+        }
+        function stopCarousel() {
+            clearInterval(interval);
+        }
+        // Manage carousel on tab change
+        tabs.forEach(tab => tab.addEventListener('click', () => {
+            if (tab.dataset.tab === 'home') startCarousel(); else stopCarousel();
+        }));
+        // Start on load
+        startCarousel();
+    </script>
 
 </body>
 </html>
