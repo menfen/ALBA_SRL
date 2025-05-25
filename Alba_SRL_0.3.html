@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alba S.r.l</title>
+
+  <!-- CSS -->
+  <style>
+    /* Base */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #ffffff;
+      color: #3a3a3a;
+    }
+
+    /* Header */
+    header {
+      background-color: #ffffff;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    header a#logo-link {
+      display: inline-block;
+    }
+    header img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+    }
+    header h1 {
+      color: #d87d4a;
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    header .slogan {
+      margin: 0;
+      font-size: 1rem;
+      color: #3a3a3a;
+    }
+
+    /* Tabs */
+    .tab-container {
+      display: flex;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .tab {
+      flex: 1;
+      padding: 14px 16px;
+      cursor: pointer;
+      background-color: #ffffff;
+      border: none;
+      text-align: center;
+      font-size: 1rem;
+      color: #a9a9a9;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .tab:hover {
+      background-color: rgba(216,125,74,0.1);
+      color: #d87d4a;
+    }
+    .tab.active {
+      color: #d87d4a;
+      border-bottom: 3px solid #d87d4a;
+      background-color: #ffffff;
+    }
+
+    /* Tab content */
+    .tab-content {
+      display: none;
+      padding: 2rem;
+      background-color: #ffffff;
+    }
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Carousel (Home only) */
+    .carousel {
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      transform: translateX(-50%);
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .slide {
+      flex: 0 0 100vw;
+      scroll-snap-align: start;
+      position: relative;
+      min-height: 250px;
+      overflow: hidden;
+    }
+    .slide .bg-blur {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      filter: blur(20px) brightness(0.7);
+      transform: scale(1.2);
+      z-index: 1;
+    }
+    .slide img {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with clickable logo -->
+  <header>
+    <div>
+      <a href="#" id="logo-link">
+        <img src="C:/Users/hatre/Downloads/Abla%20s.r.l%20(1).png" alt="Company Logo" />
+      </a>
+      <p class="slogan">Your Trusted Renovation Partner</p>
+    </div>
+    <h1>Alba S.r.l</h1>
+  </header>
+
+  <!-- Tabs -->
+  <div class="tab-container">
+    <button class="tab active" data-tab="home">Home</button>
+    <button class="tab" data-tab="exterior">Exterior</button>
+    <button class="tab" data-tab="interior">Interior</button>
+    <button class="tab" data-tab="partners">Partners</button>
+    <button class="tab" data-tab="contact">Contact Us</button>
+  </div>
+
+  <!-- Tab contents -->
+  <div id="home" class="tab-content active">
+    <!-- Carousel only in Home -->
+    <div class="carousel">
+      <div class="slides">
+        <div class="slide">
+          <div class="bg-blur" style="background-image:url('C:/Users/hatre/Downloads/.../1.jpg');"></div>
+          <img src="C:/Users/hatre/Downloads/.../1.jpg" alt="Project 1">
+        </div>
+        <div class="slide">
+          <div class="bg-blur" style="background-image:url('C:/Users/hatre/Downloads/.../5.jpg');"></div>
+          <img src="C:/Users/hatre/Downloads/.../5.jpg" alt="Project 2">
+        </div>
+        <div class="slide">
+          <div class="bg-blur" style="background-image:url('C:/Users/hatre/Downloads/.../6.jpg');"></div>
+          <img src="C:/Users/hatre/Downloads/.../6.jpg" alt="Project 3">
+        </div>
+      </div>
+    </div>
+    <h2 style="color:#3a3a3a;">First impression for the user</h2>
+    <p>Overview and pictures about the company.</p>
+  </div>
+  <div id="exterior" class="tab-content">
+    <h2 style="color:#3a3a3a;">Exterior Projects</h2>
+    <p>Details about facade and external renovation work.</p>
+  </div>
+  <div id="interior" class="tab-content">
+    <h2 style="color:#3a3a3a;">Interior Projects</h2>
+    <p>Details about interiors, floorings, and finishes.</p>
+  </div>
+  <div id="partners" class="tab-content">
+    <h2 style="color:#3a3a3a;">Our Partners</h2>
+    <p>Commercial and industrial collaborators.</p>
+  </div>
+  <div id="contact" class="tab-content">
+    <h2 style="color:#3a3a3a;">Contact Us</h2>
+    <p>Email: info@example.com<br>Phone: +39 000 000 000</p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Contact Us | Phone: +39 000 000 000 | Email: info@example.com</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+    function activateTab(name) {
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+      contents.forEach(c => c.classList.toggle('active', c.id === name));
+    }
+    tabs.forEach(tab => tab.addEventListener('click', () => activateTab(tab.dataset.tab)));
+    document.getElementById('logo-link').addEventListener('click', e => { e.preventDefault(); activateTab('home'); });
+    
+    // Auto-slide only if on Home
+    let interval;
+    function startCarousel() {
+      const slides = document.querySelector('.slides');
+      const count = document.querySelectorAll('.slide').length;
+      let idx = 0;
+      interval = setInterval(() => {
+        idx = (idx + 1) % count;
+        slides.style.transform = `translateX(-${idx * 100}vw)`;
+      }, 4000);
+    }
+    function stopCarousel() {
+      clearInterval(interval);
+    }
+    // Manage carousel on tab change
+    tabs.forEach(tab => tab.addEventListener('click', () => {
+      if (tab.dataset.tab === 'home') startCarousel(); else stopCarousel();
+    }));
+    // Start on load
+    startCarousel();
+  </script>
+
+</body>
+</html>
