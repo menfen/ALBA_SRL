@@ -38,9 +38,12 @@
       font-size: 1.5rem;
     }
     header .slogan {
-      margin: 0;
-      font-size: 1rem;
-      color: #3a3a3a;
+    margin: 0;
+    font-size: 1rem;
+    color: #3a3a3a;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    align-self: flex-end;
     }
 
     /* Tabs */
@@ -56,6 +59,7 @@
           border: none;
           text-align: center;
           font-size: 1rem;
+          font-weight: bold;
           color: #a9a9a9;
           transition: color 0.3s ease, border-bottom 0.3s ease;
           background: none;
@@ -228,13 +232,13 @@
 
     <!-- Header with clickable logo -->
     <header>
-  <div style="display: flex; align-items: center; gap: 1rem;">
-    <a href="#" id="logo-link">
-      <img src="assets/images/logo.png" alt="Company Logo" style="width: 120px; height: 120px; object-fit: contain;" />
-    </a>
-    <p class="slogan">Your Trusted Renovation Partner</p>
-  </div>
-s
+  <div style="display: flex; align-items: flex-end; gap: 1rem;">
+  <a href="#" id="logo-link">
+    <img src="assets/images/AblaLog2.png" alt="Company Logo" style="width: 120px; height: 120px; object-fit: contain;" />
+  </a>
+  <p class="slogan">Dalla facciata agli interni: rinnoviamo i tuoi palazzi</p>
+</div>
+
   <!-- Social Icons -->
   <div style="display: flex; gap: 1rem; align-items: center;">
     <a href="https://www.linkedin.com" target="_blank" title="LinkedIn">
@@ -284,7 +288,7 @@ s
             </div>
         </div>
 
-    </div>
+    
 
         <!-- Section 1: Mission -->
         <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
