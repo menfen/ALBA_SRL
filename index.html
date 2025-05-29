@@ -84,48 +84,70 @@
       display: block;
     }
 
-    /* Carousel (Home only) */
-    .carousel {
-      position: relative;
-      width: 100vw;
-      left: 50%;
-      transform: translateX(-50%);
-      overflow: hidden;
-      margin: 1rem 0;
-    }
-    .slides {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-    .slide {
-      flex: 0 0 100vw;
-      scroll-snap-align: start;
-      position: relative;
-      min-height: 250px;
-      overflow: hidden;
-    }
-    .slide .bg-blur {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      filter: blur(20px) brightness(0.7);
-      transform: scale(1.2);
-      z-index: 1;
-    }
-    .slide img {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      display: block;
+		/* Carousel Container (Home only) */
+	.carousel-container {
+	  width: 1000px;
+	  height: 600px;
+	  margin: 1rem auto;
+	  overflow: hidden;
+	  border-radius: 8px;
+	  position: relative;
+	/* Slides Wrapper */
+	.slides {
+	  display: flex;
+	  width: 100%;      /* 100% of the container */
+	  height: 100%;
+	  transition: transform 0.5s ease-in-out;
+	}
+
+	/* Each Slide */
+	.slide {
+	  flex: 0 0 100%;   /* exactly one full container width */
+	  height: 100%;
+	  position: relative;
+	}
+
+	/* Slide Image */
+	.slide img {
+	  width: 100%;
+	  height: 100%;
+	  object-fit: cover;
+	  display: block;
+	}
+
+	/* Prev/Next Buttons */
+	.prev, .next {
+	  cursor: pointer;
+	  position: absolute;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  padding: 1rem;
+	  color: #fff;
+	  font-size: 1.5rem;
+	  border: none;
+	  background-color: rgba(0,0,0,0.4);
+	  z-index: 10;
+	}
+	.prev { left: 10px; }
+	.next { right: 10px; }
+
+	/* Dots Indicators */
+	.indicators {
+	  position: absolute;
+	  bottom: 15px;
+	  width: 100%;
+	  text-align: center;
+	}
+	.dot {
+	  cursor: pointer;
+	  height: 12px; width: 12px;
+	  margin: 0 5px;
+	  background-color: #bbb;
+	  border-radius: 50%;
+	  display: inline-block;
+	  transition: background-color .3s;
+	}
+	.dot.active { background-color: #d87d4a; }
     }
 
     /* Footer */
@@ -232,7 +254,7 @@
 
     <!-- Header with clickable logo -->
     <header>
-  <div style="display: flex; align-items: flex-center; gap: 1rem;">
+  <div style="display: flex; align-items: flex-end; gap: 1rem;">
   <a href="#" id="logo-link">
     <img src="assets/images/AblaLog2.png" alt="Company Logo" style="width: 120px; height: 120px; object-fit: contain;" />
   </a>
@@ -262,22 +284,22 @@
     <!-- Tab contents -->
     <div id="home" class="tab-content active">
         <!-- Carousel -->
-        <div class="carousel-container">
-            <div class="carousel">
-                <div class="slides">
-                    <div class="slide">
-                        <img src="assets/images/Overview.png" alt="Project 1">
-                    </div>
-                    <div class="slide">
-                        <img src="assets/images/Painting outside.png" alt="Project 2">
-                    </div>
-                    <div class="slide">
-                        <img src="assets/images/Roof Isolation.png" alt="Project 3">
-                    </div>
-                    </div>
+				<div class="carousel-container">
+				  <div class="slides">
+					<div class="slide">
+					  <img src="assets/images/Overview.png" alt="Project 1">
+					</div>
+					<div class="slide">
+					  <img src="assets/images/Painting outside.png" alt="Project 2">
+					</div>
+					<div class="slide">
+					  <img src="assets/images/Roof Isolation.png" alt="Project 3">
+					</div>
+				  </div>
                 <!-- Navigation buttons -->
-                <button class="prev">&#10094;</button>
-                <button class="next">&#10095;</button>
+				 <!-- Prev/Next -->
+				  <button class="prev">&#10094;</button>
+				  <button class="next">&#10095;</button>
 
                 <!-- Indicators -->
                 <div class="indicators">
@@ -459,39 +481,37 @@
         startCarousel();
     </script>
     <script>
-  const slides = document.querySelector('.slides');
-  const slideElements = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
-  let index = 0;
+  const slidesEl = document.querySelector('.slides');
+  const slideEls  = document.querySelectorAll('.slide');
+  const dots      = document.querySelectorAll('.dot');
+  const prevBtn   = document.querySelector('.prev');
+  const nextBtn   = document.querySelector('.next');
+  let index = 0, slideCount = slideEls.length;
 
-  function showSlide(i) {
-    if (i >= slideElements.length) index = 0;
-    if (i < 0) index = slideElements.length - 1;
-
-    slides.style.transform = `translateX(-${index * 100}%)`;
-
+  function updateCarousel(i) {
+    // wrap around
+    index = (i + slideCount) % slideCount;
+    slidesEl.style.transform = `translateX(-${index * 100}%)`;
     dots.forEach(dot => dot.classList.remove('active'));
     dots[index].classList.add('active');
   }
 
-  document.querySelector('.next').addEventListener('click', () => {
-    index++;
-    showSlide(index);
-  });
+  // Prev / Next handlers
+  prevBtn.addEventListener('click', () => updateCarousel(index - 1));
+  nextBtn.addEventListener('click', () => updateCarousel(index + 1));
 
-  document.querySelector('.prev').addEventListener('click', () => {
-    index--;
-    showSlide(index);
-  });
-
+  // Dot navigation
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
-      index = parseInt(dot.getAttribute('data-slide'));
-      showSlide(index);
+      updateCarousel(parseInt(dot.dataset.slide));
     });
   });
 
-  showSlide(index);
+  // Auto-play
+  setInterval(() => updateCarousel(index + 1), 4000);
+
+  // Initialize
+  updateCarousel(0);
 </script>
 
 </body>
