@@ -25,30 +25,48 @@
             border-bottom: 1px solid #e0e0e0;
         }
 
-            header a#logo-link {
-                display: inline-block;
-            }
+        header a#logo-link {
+            display: inline-block;
+        }
 
-            header img {
-                width: 100px;
-                height: 100px;
-                object-fit: contain;
-            }
+        header img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
 
-            header h1 {
-                color: #d87d4a;
-                margin: 0;
-                font-size: 1.5rem;
-            }
+        header h1 {
+            color: #d87d4a;
+            margin: 0;
+            font-size: 1.5rem;
+        }
 
-            header .slogan {
-                margin: 0;
-                font-size: 1rem;
-                color: #3a3a3a;
-                font-weight: bold;
-                font-family: 'Georgia', serif;
-                align-self: flex-end;
-            }
+        header .slogan {
+            margin: 0;
+            font-size: 1rem;
+            color: #3a3a3a;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+            align-self: flex-end;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            font-weight: bold;
+        }
+        .lang-switcher a {
+            color: #3a3a3a;
+            text-decoration: none;
+        }
+        .lang-switcher a:hover {
+            color: #d87d4a;
+        }
+        .lang-switcher span {
+            color: #a9a9a9;
+        }
 
         /* Tabs */
         .tab-container {
@@ -69,17 +87,15 @@
             transition: color 0.3s ease, border-bottom 0.3s ease;
             background: none;
         }
-
-            .tab:hover {
-                background-color: rgba(216,125,74,0.1);
-                color: #d87d4a;
-            }
-
-            .tab.active {
-                color: #d87d4a;
-                border-bottom: 3px solid #d87d4a;
-                background-color: #ffffff;
-            }
+        .tab:hover {
+            background-color: rgba(216,125,74,0.1);
+            color: #d87d4a;
+        }
+        .tab.active {
+            color: #d87d4a;
+            border-bottom: 3px solid #d87d4a;
+            background-color: #ffffff;
+        }
 
         /* Tab content */
         .tab-content {
@@ -87,102 +103,42 @@
             padding: 2rem;
             background-color: #ffffff;
         }
+        .tab-content.active {
+            display: block;
+        }
 
-            .tab-content.active {
-                display: block;
-            }
-
-    /* Carousel (Home only) */
-    .carousel {
-      position: relative;
-      width: 100vw;
-      left: 50%;
-      transform: translateX(-50%);
-      overflow: hidden;
-      margin: 1rem 0;
-    }
-    .slides {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-    .slide {
-      flex: 0 0 100vw;
-      scroll-snap-align: start;
-      position: relative;
-      min-height: 250px;
-      overflow: hidden;
-    }
-    .slide .bg-blur {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      filter: blur(20px) brightness(0.7);
-      transform: scale(1.2);
-      z-index: 1;
-    }
-    .slide img {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Footer */
-    footer {
-      background-color: #000000;
-      color: #ffffff;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.8rem;
-    }
-    .carousel-container {
-        width: 1000px;
-        height: 600px;
-        margin: 0 auto;
-        overflow: hidden;
-        border-radius: 8px;
-        position: relative;
-    }
-
+        /* Carousel (Home only) */
+        .carousel-container {
+            width: 1000px;
+            height: 600px;
+            margin: 1rem auto;
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+        }
         .carousel {
             width: 100%;
             height: 100%;
             overflow: hidden;
         }
-
         .slides {
             display: flex;
             width: 100%;
             height: 100%;
             transition: transform 0.5s ease-in-out;
         }
-
         .slide {
             flex: 0 0 100%;
             height: 100%;
             position: relative;
             scroll-snap-align: start;
         }
-
-            .slide .bg-blur {
-                display: none; /* Not needed for fixed-size version, remove or hide */
-            }
-
-            .slide img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover; /* Use "contain" instead if you want the entire image to be visible without cropping */
-                display: block;
-            }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
         .prev, .next {
             cursor: pointer;
@@ -200,18 +156,15 @@
             user-select: none;
             z-index: 10;
         }
-
         .prev {
             left: 10px;
         }
-
         .next {
             right: 10px;
         }
-
-            .prev:hover, .next:hover {
-                background-color: rgba(0,0,0,0.8);
-            }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
 
         .indicators {
             text-align: center;
@@ -219,7 +172,6 @@
             bottom: 15px;
             width: 100%;
         }
-
         .dot {
             cursor: pointer;
             height: 12px;
@@ -230,10 +182,18 @@
             display: inline-block;
             transition: background-color 0.3s;
         }
+        .dot.active {
+            background-color: #d87d4a;
+        }
 
-            .dot.active {
-                background-color: #d87d4a;
-            }
+        /* Footer */
+        footer {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 <body>
@@ -247,14 +207,21 @@
             <p class="slogan">Dalla facciata agli interni: rinnoviamo i tuoi palazzi</p>
         </div>
 
-        <!-- Social Icons -->
         <div style="display: flex; gap: 1rem; align-items: center;">
+            <!-- Social Icons -->
             <a href="https://www.linkedin.com" target="_blank" title="LinkedIn">
-                <img src="assets\images\linkedin.png" alt="LinkedIn" style="width: 24px; height: 24px;">
+                <img src="assets/images/linkedin.png" alt="LinkedIn" style="width: 24px; height: 24px;" />
             </a>
             <a href="https://www.instagram.com" target="_blank" title="Instagram">
-                <img src="assets\images\instagram.png" alt="Instagram" style="width: 24px; height: 24px;">
+                <img src="assets/images/instagram.png" alt="Instagram" style="width: 24px; height: 24px;" />
             </a>
+
+            <!-- Language Switcher -->
+            <div class="lang-switcher">
+                <a href="index.html">EN</a>
+                <span>|</span>
+                <a href="index_it.html">IT</a>
+            </div>
         </div>
     </header>
 
@@ -274,19 +241,18 @@
             <div class="carousel">
                 <div class="slides">
                     <div class="slide">
-                        <img src="assets/images/Overview.png" alt="Project 1">
+                        <img src="assets/images/Overview.png" alt="Project 1" />
                     </div>
                     <div class="slide">
-                        <img src="assets/images/Painting outside.png" alt="Project 2">
+                        <img src="assets/images/Painting outside.png" alt="Project 2" />
                     </div>
                     <div class="slide">
-                        <img src="assets/images/Roof Isolation.png" alt="Project 3">
+                        <img src="assets/images/Roof Isolation.png" alt="Project 3" />
                     </div>
                 </div>
-                <!-- Navigation buttons -->
-				 <!-- Prev/Next -->
-				  <button class="prev">&#10094;</button>
-				  <button class="next">&#10095;</button>
+                <!-- Prev/Next -->
+                <button class="prev">&#10094;</button>
+                <button class="next">&#10095;</button>
 
                 <!-- Indicators -->
                 <div class="indicators">
@@ -297,19 +263,18 @@
             </div>
         </div>
 
-    
-
         <!-- Section 1: Mission -->
         <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
             <h2 style="color: #d87d4a;">Craftsmanship Meets Innovation</h2>
             <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
                 <div style="flex: 1;">
                     <p>
-                        At Alba S.r.l, we bring together tradition and modern building techniques to deliver sustainable, visually stunning renovation solutions.
-                        Our strength lies in our detail-oriented execution and commitment to client satisfaction.
+                        At Alba S.r.l, we bring together tradition and modern building techniques
+                        to deliver sustainable, visually stunning renovation solutions. Our strength
+                        lies in our detail-oriented execution and commitment to client satisfaction.
                     </p>
                 </div>
-                <img src="C:\Users\hatre\OneDrive\Documents\GitHub\ALBA_SRL\assets\images\Plumber.png" alt="Craftsmanship" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+                <img src="assets/images/Plumber.png" alt="Craftsmanship" style="width: 300px; max-width: 100%; border-radius: 8px;" />
             </div>
         </section>
 
@@ -319,11 +284,12 @@
             <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
                 <div style="flex: 1;">
                     <p>
-                        We only work with certified materials and suppliers. Each project is built to last, with quality assurance processes
-                        embedded at every phase—from planning to finishing.
+                        We only work with certified materials and suppliers. Each project is built
+                        to last, with quality assurance processes embedded at every phase—from
+                        planning to finishing.
                     </p>
                 </div>
-                <img src="C:\Users\hatre\OneDrive\Documents\GitHub\ALBA_SRL\assets\images\Overview.png" alt="Quality Inspection" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+                <img src="assets/images/Overview.png" alt="Quality Inspection" style="width: 300px; max-width: 100%; border-radius: 8px;" />
             </div>
         </section>
 
@@ -333,11 +299,12 @@
             <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
                 <div style="flex: 1;">
                     <p>
-                        Whether it’s a boutique storefront, a corporate headquarters, or a hospitality venue,
-                        we understand the unique needs of commercial spaces. Our tailored solutions reduce downtime and ensure operational continuity.
+                        Whether it’s a boutique storefront, a corporate headquarters, or
+                        a hospitality venue, we understand the unique needs of commercial spaces.
+                        Our tailored solutions reduce downtime and ensure operational continuity.
                     </p>
                 </div>
-                <img src="C:\Users\hatre\OneDrive\Documents\GitHub\ALBA_SRL\assets\images\Extrior 1.png" alt="Commercial Services" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+                <img src="assets/images/Extrior 1.png" alt="Commercial Services" style="width: 300px; max-width: 100%; border-radius: 8px;" />
             </div>
         </section>
 
@@ -348,85 +315,76 @@
                 <div style="flex: 1;">
                     <p>
                         Based in Milan, Alba S.r.l delivers renovation excellence across the country.
-                        Our network of trusted professionals allows us to serve clients in every region with the same dedication and expertise.
+                        Our network of trusted professionals allows us to serve clients in every region
+                        with the same dedication and expertise.
                     </p>
                 </div>
-                <img src="C:\Users\hatre\OneDrive\Documents\GitHub\ALBA_SRL\assets\images\Extrior 2.png" alt="Nationwide Operations" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+                <img src="assets/images/Extrior 2.png" alt="Nationwide Operations" style="width: 300px; max-width: 100%; border-radius: 8px;" />
             </div>
         </section>
     </div>
-		<!-- Exterior Tab -->
-		  <div id="exterior" class="tab-content">
-		  <!-- Exterior Content -->
-		  <h2 style="color:#3a3a3a;">Façade and Exterior Renovation</h2>
-		  <p>
-			At ALBA S.r.l., we specialize in exterior construction and renovation that not only enhances the beauty of your building—but ensures its strength and safety.
-		  </p>
 
-		  <!-- Seismic Section -->
-		  <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
-			<h3 style="color:#d87d4a;">Seismic Reinforcement Work</h3>
-			<div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
-			  <img src="assets/images/seismic.png" alt="Seismic Reinforcement" style="width:300px; max-width:100%; border-radius:8px;" />
-			  <div>
-				<p>Structural upgrades designed to protect buildings from earthquake damage, using advanced anti-seismic techniques.</p>
-			  </div>
-			</div>
-		  </section>
+    <!-- Exterior Tab -->
+    <div id="exterior" class="tab-content">
+        <h2 style="color:#3a3a3a;">Façade and Exterior Renovation</h2>
+        <p>
+            At ALBA S.r.l., we specialize in exterior construction and renovation that not only
+            enhances the beauty of your building—but ensures its strength and safety.
+        </p>
 
-		  <!-- Insulation Section -->
-		  <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
-			<h3 style="color:#d87d4a;">Thermal and Acoustic Insulation</h3>
-			<div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
-			  <img src="assets/images/insulation.png" alt="Thermal and Acoustic Insulation" style="width:300px; max-width:100%; border-radius:8px;" />
-			  <div>
-				<p>Exterior insulation systems (cappotto termico) that improve energy efficiency and interior comfort.</p>
-			  </div>
-			</div>
-		  </section>
+        <!-- Seismic Section -->
+        <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+            <h3 style="color:#d87d4a;">Seismic Reinforcement Work</h3>
+            <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+                <img src="assets/images/seismic.png" alt="Seismic Reinforcement" style="width:300px; max-width:100%; border-radius:8px;" />
+                <div>
+                    <p>
+                        Structural upgrades designed to protect buildings from earthquake damage,
+                        using advanced anti-seismic techniques.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-		  <!-- Painting Section -->
-		  <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
-			<h3 style="color:#d87d4a;">Plastering and Façade Painting</h3>
-			<div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
-			  <img src="assets/images/painting.png" alt="Plastering and Façade Painting" style="width:300px; max-width:100%; border-radius:8px;" />
-			  <div>
-				<p>High-quality exterior finishing, restoring buildings with long-lasting, weather-resistant coatings.</p>
-			  </div>
-			</div>
-		  </section>
-		  <!-- Section: Thermal & Acoustic Insulation -->
-		  <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
-			<div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
-			  <img src="assets/images/insulation.png" alt="Thermal and Acoustic Insulation" style="width:300px; max-width:100%; border-radius:8px;" />
-			  <div>
-				<h3 style="color:#d87d4a;">Thermal and Acoustic Insulation</h3>
-				<p>Exterior insulation systems (cappotto termico) that improve energy efficiency and interior comfort.</p>
-			  </div>
-			</div>
-		  </section>
+        <!-- Insulation Section -->
+        <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+            <h3 style="color:#d87d4a;">Thermal and Acoustic Insulation</h3>
+            <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+                <img src="assets/images/insulation.png" alt="Thermal and Acoustic Insulation" style="width:300px; max-width:100%; border-radius:8px;" />
+                <div>
+                    <p>
+                        Exterior insulation systems (cappotto termico) that improve energy efficiency
+                        and interior comfort.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-		  <!-- Section: Plastering & Façade Painting -->
-		  <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
-			<div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
-			  <img src="assets/images/painting.png" alt="Plastering and Façade Painting" style="width:300px; max-width:100%; border-radius:8px;" />
-			  <div>
-				<h3 style="color:#d87d4a;">Plastering and Façade Painting</h3>
-				<p>High-quality exterior finishing, restoring buildings with long-lasting, weather-resistant coatings.</p>
-			  </div>
-			</div>
-		  </section>
+        <!-- Painting Section -->
+        <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+            <h3 style="color:#d87d4a;">Plastering and Façade Painting</h3>
+            <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+                <img src="assets/images/painting.png" alt="Plastering and Façade Painting" style="width:300px; max-width:100%; border-radius:8px;" />
+                <div>
+                    <p>
+                        High-quality exterior finishing, restoring buildings with long-lasting,
+                        weather-resistant coatings.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-		  <p>
-			We deliver durable, regulation-compliant solutions tailored to your building’s specific needs—whether residential, commercial, or public.
-		  </p>
-		</div>
+        <p>
+            We deliver durable, regulation-compliant solutions tailored to your building’s specific needs—
+            whether residential, commercial, or public.
+        </p>
+    </div>
 
     <div id="interior" class="tab-content">
         <h2 style="color:#3a3a3a;">Interior Renovation and Fit-Outs</h2>
         <p>
-            From initial concept to final finish, Alba S.r.l transforms interior spaces with meticulous attention to detail.
-            Our services include:
+            From initial concept to final finish, Alba S.r.l transforms interior spaces with meticulous
+            attention to detail. Our services include:
         </p>
         <ul>
             <li>Complete interior renovation</li>
@@ -435,16 +393,18 @@
             <li>Painting, lighting, and interior design coordination</li>
         </ul>
         <p>
-            We help businesses and property owners reimagine their interiors into modern, functional, and welcoming spaces.
+            We help businesses and property owners reimagine their interiors into modern, functional,
+            and welcoming spaces.
         </p>
         <!-- [SPACE FOR INTERIOR PROJECT IMAGES] -->
-
     </div>
+
     <div id="partners" class="tab-content">
         <h2 style="color:#3a3a3a;">Our Partners and Clients</h2>
         <p>
-            Alba S.r.l collaborates with leading architectural studios, real estate developers, and commercial clients across Italy.
-            We pride ourselves on long-term partnerships built on transparency, reliability, and mutual growth.
+            Alba S.r.l collaborates with leading architectural studios, real estate developers,
+            and commercial clients across Italy. We pride ourselves on long-term partnerships
+            built on transparency, reliability, and mutual growth.
         </p>
         <p>
             We have contributed to:
@@ -459,8 +419,8 @@
             Join our network of trusted collaborators.
         </p>
         <!-- [SPACE FOR LOGOS OR PHOTOS WITH PARTNERS] -->
-
     </div>
+
     <div id="contact" class="tab-content">
         <h2 style="color:#3a3a3a;">Get in Touch</h2>
         <p>
@@ -469,24 +429,16 @@
         <ul>
             <li><strong>Email:</strong> albasrledilizia2000@gmail.com</li>
             <li><strong>Phone:</strong> +39 345 678 9012</li>
-            <li>
-                <strong>Address:</strong> VIA GAETANO SALVEMINI 9, 20161 Milano (MI)
-            </li>
+            <li><strong>Address:</strong> VIA GAETANO SALVEMINI 9, 20161 Milano (MI)</li>
         </ul>
         <p>
             Or simply fill out the form below, and our team will get back to you within 24 hours.
         </p>
 
         <!-- Contact Form starts here -->
-        <form action="https://formsubmit.co/albasrledilizia2000@gmail.com"
-              method="POST"
-              style="max-width:500px; margin-top:1.5rem;">
+        <form action="https://formsubmit.co/albasrledilizia2000@gmail.com" method="POST" style="max-width:500px; margin-top:1.5rem;">
             <!-- Disable Formsubmit’s CAPTCHA (optional) -->
             <input type="hidden" name="_captcha" value="true" />
-
-            <!-- Redirect user to a "Thank You" page (optional)
-            <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html" />
-            -->
 
             <label for="name" style="display:block; margin-bottom:0.5rem;">
                 Name:
@@ -520,22 +472,20 @@
 
             <button type="submit"
                     style="
-        margin-top:1rem;
-        padding:0.75rem 1.5rem;
-        background-color:#007bff;
-        color:#fff;
-        border:none;
-        border-radius:4px;
-        cursor:pointer;
-        font-size:1rem;
-      ">
+                        margin-top:1rem;
+                        padding:0.75rem 1.5rem;
+                        background-color:#007bff;
+                        color:#fff;
+                        border:none;
+                        border-radius:4px;
+                        cursor:pointer;
+                        font-size:1rem;
+                    ">
                 Send Message
             </button>
         </form>
         <!-- Contact Form ends here -->
-
     </div>
-
 
     <!-- Footer -->
     <footer>
@@ -551,7 +501,10 @@
             contents.forEach(c => c.classList.toggle('active', c.id === name));
         }
         tabs.forEach(tab => tab.addEventListener('click', () => activateTab(tab.dataset.tab)));
-        document.getElementById('logo-link').addEventListener('click', e => { e.preventDefault(); activateTab('home'); });
+        document.getElementById('logo-link').addEventListener('click', e => {
+            e.preventDefault();
+            activateTab('home');
+        });
 
         // Auto-slide only if on Home
         let interval;
@@ -569,46 +522,46 @@
         }
         // Manage carousel on tab change
         tabs.forEach(tab => tab.addEventListener('click', () => {
-            if (tab.dataset.tab === 'home') startCarousel(); else stopCarousel();
+            if (tab.dataset.tab === 'home') startCarousel();
+            else stopCarousel();
         }));
         // Start on load
         startCarousel();
     </script>
     <script>
-  const slides = document.querySelector('.slides');
-  const slideElements = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
-  let index = 0;
+        const slides = document.querySelector('.slides');
+        const slideElements = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let index = 0;
 
-  function showSlide(i) {
-    if (i >= slideElements.length) index = 0;
-    if (i < 0) index = slideElements.length - 1;
+        function showSlide(i) {
+            if (i >= slideElements.length) index = 0;
+            if (i < 0) index = slideElements.length - 1;
 
-    slides.style.transform = `translateX(-${index * 100}%)`;
+            slides.style.transform = `translateX(-${index * 100}%)`;
 
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[index].classList.add('active');
-  }
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+        }
 
-  document.querySelector('.next').addEventListener('click', () => {
-    index++;
-    showSlide(index);
-  });
+        document.querySelector('.next').addEventListener('click', () => {
+            index++;
+            showSlide(index);
+        });
 
-  document.querySelector('.prev').addEventListener('click', () => {
-    index--;
-    showSlide(index);
-  });
+        document.querySelector('.prev').addEventListener('click', () => {
+            index--;
+            showSlide(index);
+        });
 
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      index = parseInt(dot.getAttribute('data-slide'));
-      showSlide(index);
-    });
-  });
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                index = parseInt(dot.getAttribute('data-slide'));
+                showSlide(index);
+            });
+        });
 
-  showSlide(index);
-</script>
-
+        showSlide(index);
+    </script>
 </body>
 </html>
