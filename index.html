@@ -109,13 +109,16 @@
 
         /* Carousel (Home only) */
         .carousel-container {
-            width: 1000px;
-            height: 600px;
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
             margin: 1rem auto;
             overflow: hidden;
             border-radius: 8px;
             position: relative;
+            aspect-ratio: 5 / 3;
         }
+
         .carousel {
             width: 100%;
             height: 100%;
@@ -239,27 +242,13 @@
         <!-- Carousel -->
         <div class="carousel-container">
             <div class="carousel">
-                <div class="slides">
-                    <div class="slide">
-                        <img src="assets/images/Overview.png" alt="Project 1" />
-                    </div>
-                    <div class="slide">
-                        <img src="assets/images/Painting outside.png" alt="Project 2" />
-                    </div>
-                    <div class="slide">
-                        <img src="assets/images/Roof Isolation.png" alt="Project 3" />
-                    </div>
-                </div>
+                <div class="slides" id="dynamicSlides"></div>
                 <!-- Prev/Next -->
                 <button class="prev">&#10094;</button>
                 <button class="next">&#10095;</button>
 
                 <!-- Indicators -->
-                <div class="indicators">
-                    <span class="dot" data-slide="0"></span>
-                    <span class="dot" data-slide="1"></span>
-                    <span class="dot" data-slide="2"></span>
-                </div>
+                <div class="indicators" id="carouselIndicators"></div>
             </div>
         </div>
 
@@ -513,8 +502,7 @@
             const count = document.querySelectorAll('.slide').length;
             let idx = 0;
             interval = setInterval(() => {
-                idx = (idx + 1) % count;
-                slides.style.transform = `translateX(-${idx * 100}vw)`;
+            showSlide(index + 1);
             }, 4000);
         }
         function stopCarousel() {
@@ -529,39 +517,82 @@
         startCarousel();
     </script>
     <script>
-        const slides = document.querySelector('.slides');
-        const slideElements = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        let index = 0;
+    const imageFilenames = Array.from({ length: 6 }, (_, i) => `carousel${i + 1}.png`);
 
-        function showSlide(i) {
-            if (i >= slideElements.length) index = 0;
-            if (i < 0) index = slideElements.length - 1;
 
-            slides.style.transform = `translateX(-${index * 100}%)`;
+    const slidesContainer = document.getElementById('dynamicSlides');
+    const indicatorsContainer = document.getElementById('carouselIndicators');
 
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[index].classList.add('active');
-        }
+    // Create slides and dots
+    imageFilenames.forEach((filename, i) => {
+        // Slide
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        const img = document.createElement('img');
+        img.src = `assets/images/home/Carousel/${filename}`;
+        img.alt = `Slide ${i + 1}`;
+        slide.appendChild(img);
+        slidesContainer.appendChild(slide);
 
-        document.querySelector('.next').addEventListener('click', () => {
-            index++;
-            showSlide(index);
+        // Dot
+        const dot = document.createElement('span');
+        dot.className = 'dot';
+        dot.setAttribute('data-slide', i);
+        indicatorsContainer.appendChild(dot);
+    });
+
+    // Now setup carousel logic
+    const slides = document.querySelector('.slides');
+    let index = 0;
+let slideElements, dots;
+
+function initializeCarousel() {
+    slideElements = document.querySelectorAll('.slide');
+    dots = document.querySelectorAll('.dot');
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const i = parseInt(dot.getAttribute('data-slide'));
+            showSlide(i);
         });
+    });
 
-        document.querySelector('.prev').addEventListener('click', () => {
-            index--;
-            showSlide(index);
-        });
+    showSlide(index);
+}
+initializeCarousel();
 
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                index = parseInt(dot.getAttribute('data-slide'));
-                showSlide(index);
-            });
-        });
 
+    function showSlide(i) {
+    index = i;
+    if (index >= slideElements.length) index = 0;
+    if (index < 0) index = slideElements.length - 1;
+
+    slides.style.transform = `translateX(-${index * 100}%)`;
+
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index].classList.add('active');
+}
+
+
+    document.querySelector('.next').addEventListener('click', () => {
+        index++;
         showSlide(index);
-    </script>
+    });
+
+    document.querySelector('.prev').addEventListener('click', () => {
+        index--;
+        showSlide(index);
+    });
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            index = parseInt(dot.getAttribute('data-slide'));
+            showSlide(index);
+        });
+    });
+
+    showSlide(index);
+</script>
+
 </body>
 </html>
