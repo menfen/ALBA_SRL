@@ -92,71 +92,66 @@
                 display: block;
             }
 
-        /* Carousel (Home only) */
-        .carousel {
-            position: relative;
-            width: 100vw;
-            left: 50%;
-            transform: translateX(-50%);
-            overflow: hidden;
-            margin: 1rem 0;
-        }
+    /* Carousel (Home only) */
+    .carousel {
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      transform: translateX(-50%);
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .slide {
+      flex: 0 0 100vw;
+      scroll-snap-align: start;
+      position: relative;
+      min-height: 250px;
+      overflow: hidden;
+    }
+    .slide .bg-blur {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      filter: blur(20px) brightness(0.7);
+      transform: scale(1.2);
+      z-index: 1;
+    }
+    .slide img {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
 
-        .slides {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .slide {
-            flex: 0 0 100vw;
-            scroll-snap-align: start;
-            position: relative;
-            min-height: 250px;
-            overflow: hidden;
-        }
-
-            .slide .bg-blur {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-size: cover;
-                background-position: center;
-                filter: blur(20px) brightness(0.7);
-                transform: scale(1.2);
-                z-index: 1;
-            }
-
-            .slide img {
-                position: relative;
-                z-index: 2;
-                width: 100%;
-                height: auto;
-                object-fit: cover;
-                display: block;
-            }
-
-        /* Footer */
-        footer {
-            background-color: #000000;
-            color: #ffffff;
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.8rem;
-        }
-
-        .carousel-container {
-            width: 1000px;
-            height: 600px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 8px;
-            position: relative;
-        }
+    /* Footer */
+    footer {
+      background-color: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.8rem;
+    }
+    .carousel-container {
+        width: 1000px;
+        height: 600px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 8px;
+        position: relative;
+    }
 
         .carousel {
             width: 100%;
@@ -289,8 +284,9 @@
                     </div>
                 </div>
                 <!-- Navigation buttons -->
-                <button class="prev">&#10094;</button>
-                <button class="next">&#10095;</button>
+				 <!-- Prev/Next -->
+				  <button class="prev">&#10094;</button>
+				  <button class="next">&#10095;</button>
 
                 <!-- Indicators -->
                 <div class="indicators">
@@ -301,7 +297,7 @@
             </div>
         </div>
 
-
+    
 
         <!-- Section 1: Mission -->
         <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
@@ -359,25 +355,73 @@
             </div>
         </section>
     </div>
+		<!-- Exterior Tab -->
+		  <div id="exterior" class="tab-content">
+		  <!-- Exterior Content -->
+		  <h2 style="color:#3a3a3a;">Façade and Exterior Renovation</h2>
+		  <p>
+			At ALBA S.r.l., we specialize in exterior construction and renovation that not only enhances the beauty of your building—but ensures its strength and safety.
+		  </p>
 
-    <div id="exterior" class="tab-content">
-        <h2 style="color:#3a3a3a;">Façade and Exterior Renovation</h2>
-        <p>
-            Alba S.r.l offers comprehensive exterior renovation services for commercial and residential buildings.
-            We specialize in:
-        </p>
-        <ul>
-            <li>Façade restoration and painting</li>
-            <li>Thermal insulation systems (cappotto termico)</li>
-            <li>Waterproofing and roof maintenance</li>
-            <li>Concrete repair and structural recovery</li>
-        </ul>
-        <p>
-            Our team ensures that every exterior project enhances the building’s visual appeal while increasing its energy efficiency and compliance with local building standards.
-        </p>
-        <!-- [SPACE FOR EXTERIOR PROJECT IMAGES] -->
+		  <!-- Seismic Section -->
+		  <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+			<h3 style="color:#d87d4a;">Seismic Reinforcement Work</h3>
+			<div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+			  <img src="assets/images/seismic.png" alt="Seismic Reinforcement" style="width:300px; max-width:100%; border-radius:8px;" />
+			  <div>
+				<p>Structural upgrades designed to protect buildings from earthquake damage, using advanced anti-seismic techniques.</p>
+			  </div>
+			</div>
+		  </section>
 
-    </div>
+		  <!-- Insulation Section -->
+		  <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+			<h3 style="color:#d87d4a;">Thermal and Acoustic Insulation</h3>
+			<div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+			  <img src="assets/images/insulation.png" alt="Thermal and Acoustic Insulation" style="width:300px; max-width:100%; border-radius:8px;" />
+			  <div>
+				<p>Exterior insulation systems (cappotto termico) that improve energy efficiency and interior comfort.</p>
+			  </div>
+			</div>
+		  </section>
+
+		  <!-- Painting Section -->
+		  <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+			<h3 style="color:#d87d4a;">Plastering and Façade Painting</h3>
+			<div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+			  <img src="assets/images/painting.png" alt="Plastering and Façade Painting" style="width:300px; max-width:100%; border-radius:8px;" />
+			  <div>
+				<p>High-quality exterior finishing, restoring buildings with long-lasting, weather-resistant coatings.</p>
+			  </div>
+			</div>
+		  </section>
+		  <!-- Section: Thermal & Acoustic Insulation -->
+		  <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+			<div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+			  <img src="assets/images/insulation.png" alt="Thermal and Acoustic Insulation" style="width:300px; max-width:100%; border-radius:8px;" />
+			  <div>
+				<h3 style="color:#d87d4a;">Thermal and Acoustic Insulation</h3>
+				<p>Exterior insulation systems (cappotto termico) that improve energy efficiency and interior comfort.</p>
+			  </div>
+			</div>
+		  </section>
+
+		  <!-- Section: Plastering & Façade Painting -->
+		  <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+			<div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+			  <img src="assets/images/painting.png" alt="Plastering and Façade Painting" style="width:300px; max-width:100%; border-radius:8px;" />
+			  <div>
+				<h3 style="color:#d87d4a;">Plastering and Façade Painting</h3>
+				<p>High-quality exterior finishing, restoring buildings with long-lasting, weather-resistant coatings.</p>
+			  </div>
+			</div>
+		  </section>
+
+		  <p>
+			We deliver durable, regulation-compliant solutions tailored to your building’s specific needs—whether residential, commercial, or public.
+		  </p>
+		</div>
+
     <div id="interior" class="tab-content">
         <h2 style="color:#3a3a3a;">Interior Renovation and Fit-Outs</h2>
         <p>
@@ -529,41 +573,39 @@
         startCarousel();
     </script>
     <script>
-        const slides = document.querySelector('.slides');
-        const slideElements = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        let index = 0;
+  const slides = document.querySelector('.slides');
+  const slideElements = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  let index = 0;
 
-        function showSlide(i) {
-            if (i >= slideElements.length) index = 0;
-            if (i < 0) index = slideElements.length - 1;
+  function showSlide(i) {
+    if (i >= slideElements.length) index = 0;
+    if (i < 0) index = slideElements.length - 1;
 
-            slides.style.transform = `translateX(-${index * 100}%)`;
+    slides.style.transform = `translateX(-${index * 100}%)`;
 
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[index].classList.add('active');
-        }
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index].classList.add('active');
+  }
 
-        document.querySelector('.next').addEventListener('click', () => {
-            index++;
-            showSlide(index);
-        });
+  document.querySelector('.next').addEventListener('click', () => {
+    index++;
+    showSlide(index);
+  });
 
-        document.querySelector('.prev').addEventListener('click', () => {
-            index--;
-            showSlide(index);
-        });
+  document.querySelector('.prev').addEventListener('click', () => {
+    index--;
+    showSlide(index);
+  });
 
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                index = parseInt(dot.getAttribute('data-slide'));
-                showSlide(index);
-            });
-        });
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      index = parseInt(dot.getAttribute('data-slide'));
+      showSlide(index);
+    });
+  });
 
-        showSlide(index);
-    </script>
+  showSlide(index);
+</script>
 
 </body>
-
-</html>
