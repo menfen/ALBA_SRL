@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alba S.r.l</title>
+
+    <!-- CSS -->
+    <style>
+        /* Base */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #ffffff;
+            color: #3a3a3a;
+        }
+
+        /* Header */
+        header {
+            background-color: #ffffff;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        header a#logo-link {
+            display: inline-block;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+
+        header h1 {
+            color: #d87d4a;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        header .slogan {
+            margin: 0;
+            font-size: 1rem;
+            color: #3a3a3a;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+            align-self: flex-end;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            font-weight: bold;
+        }
+        .lang-switcher a {
+            color: #3a3a3a;
+            text-decoration: none;
+        }
+        .lang-switcher a:hover {
+            color: #d87d4a;
+        }
+        .lang-switcher span {
+            color: #a9a9a9;
+        }
+
+        /* Tabs */
+        .tab-container {
+            display: flex;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .tab {
+            flex: 1;
+            padding: 14px 16px;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #a9a9a9;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            background: none;
+        }
+        .tab:hover {
+            background-color: rgba(216,125,74,0.1);
+            color: #d87d4a;
+        }
+        .tab.active {
+            color: #d87d4a;
+            border-bottom: 3px solid #d87d4a;
+            background-color: #ffffff;
+        }
+
+        /* Tab content */
+        .tab-content {
+            display: none;
+            padding: 2rem;
+            background-color: #ffffff;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Carousel (Home only) */
+        .carousel-container {
+            width: 1000px;
+            height: 600px;
+            margin: 1rem auto;
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+        }
+        .carousel {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            flex: 0 0 100%;
+            height: 100%;
+            position: relative;
+            scroll-snap-align: start;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 1rem;
+            margin-top: -22px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.5rem;
+            transition: 0.3s ease;
+            border: none;
+            background-color: rgba(0,0,0,0.4);
+            user-select: none;
+            z-index: 10;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .indicators {
+            text-align: center;
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+        }
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .dot.active {
+            background-color: #d87d4a;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with clickable logo -->
+    <header>
+        <div style="display: flex; align-items: flex-end; gap: 1rem;">
+            <a href="#" id="logo-link">
+                <img src="assets/images/AblaLog2.png" alt="Logo Azienda" style="width: 120px; height: 120px; object-fit: contain;" />
+            </a>
+            <p class="slogan">Dalla facciata agli interni: rinnoviamo i tuoi palazzi</p>
+        </div>
+
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <!-- Social Icons -->
+            <a href="https://www.linkedin.com" target="_blank" title="LinkedIn">
+                <img src="assets/images/linkedin.png" alt="LinkedIn" style="width: 24px; height: 24px;" />
+            </a>
+            <a href="https://www.instagram.com" target="_blank" title="Instagram">
+                <img src="assets/images/instagram.png" alt="Instagram" style="width: 24px; height: 24px;" />
+            </a>
+
+            <!-- Language Switcher -->
+            <div class="lang-switcher">
+                <a href="index.html">EN</a>
+                <span>|</span>
+                <a href="index_it.html">IT</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tabs -->
+    <div class="tab-container">
+        <button class="tab active" data-tab="home">Home</button>
+        <button class="tab" data-tab="exterior">Esterni</button>
+        <button class="tab" data-tab="interior">Interni</button>
+        <button class="tab" data-tab="partners">Partner</button>
+        <button class="tab" data-tab="contact">Contatti</button>
+    </div>
+
+    <!-- Tab contents -->
+    <div id="home" class="tab-content active">
+        <!-- Carousel -->
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="assets/images/Overview.png" alt="Progetto 1" />
+                    </div>
+                    <div class="slide">
+                        <img src="assets/images/Painting outside.png" alt="Progetto 2" />
+                    </div>
+                    <div class="slide">
+                        <img src="assets/images/Roof Isolation.png" alt="Progetto 3" />
+                    </div>
+                </div>
+                <!-- Prev/Next -->
+                <button class="prev">&#10094;</button>
+                <button class="next">&#10095;</button>
+
+                <!-- Indicators -->
+                <div class="indicators">
+                    <span class="dot" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1: Mission -->
+        <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+            <h2 style="color: #d87d4a;">Maestria e Innovazione</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                <div style="flex: 1;">
+                    <p>
+                        Presso Alba S.r.l, uniamo tradizione e tecniche edilizie moderne
+                        per offrire soluzioni di ristrutturazione sostenibili e di grande impatto visivo.
+                        Il nostro punto di forza è l’attenzione al dettaglio e l’impegno per la soddisfazione del cliente.
+                    </p>
+                </div>
+                <img src="assets/images/Plumber.png" alt="Artigianato" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+            </div>
+        </section>
+
+        <!-- Section 2: Quality Assurance -->
+        <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+            <h2 style="color: #d87d4a;">Qualità e Materiali Certificati</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                <div style="flex: 1;">
+                    <p>
+                        Lavoriamo solo con materiali e fornitori certificati. Ogni progetto è realizzato per durare,
+                        con processi di controllo qualità integrati in ogni fase—dalla progettazione alla consegna finale.
+                    </p>
+                </div>
+                <img src="assets/images/Overview.png" alt="Ispezione Qualità" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+            </div>
+        </section>
+
+        <!-- Section 3: Focus on Businesses -->
+        <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+            <h2 style="color: #d87d4a;">Soluzioni Personalizzate per le Aziende</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                <div style="flex: 1;">
+                    <p>
+                        Che si tratti di una boutique, di una sede aziendale o di una struttura ricettiva,
+                        comprendiamo le esigenze specifiche degli spazi commerciali.
+                        Le nostre soluzioni su misura riducono i tempi di fermo e garantiscono continuità operativa.
+                    </p>
+                </div>
+                <img src="assets/images/Extrior 1.png" alt="Servizi Commerciali" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+            </div>
+        </section>
+
+        <!-- Section 4: Nationwide Reach -->
+        <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+            <h2 style="color: #d87d4a;">Serviamo Tutta l’Italia</h2>
+            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                <div style="flex: 1;">
+                    <p>
+                        Con sede a Milano, Alba S.r.l garantisce eccellenza nelle ristrutturazioni in tutto il Paese.
+                        La nostra rete di professionisti di fiducia ci permette di servire clienti in ogni regione
+                        con la stessa dedizione ed esperienza.
+                    </p>
+                </div>
+                <img src="assets/images/Extrior 2.png" alt="Operazioni Nazionali" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+            </div>
+        </section>
+    </div>
+
+    <!-- Exterior Tab -->
+    <div id="exterior" class="tab-content">
+        <h2 style="color:#3a3a3a;">Ristrutturazione di Facciate ed Esterni</h2>
+        <p>
+            Presso ALBA S.r.l., siamo specializzati in costruzione e ristrutturazione esterna che non solo
+            migliora la bellezza del tuo edificio, ma ne garantisce forza e sicurezza.
+        </p>
+
+        <!-- Seismic Section -->
+        <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+            <h3 style="color:#d87d4a;">Lavori di Rinforzo Sismico</h3>
+            <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+                <img src="assets/images/seismic.png" alt="Rinforzo Sismico" style="width:300px; max-width:100%; border-radius:8px;" />
+                <div>
+                    <p>
+                        Migliorie strutturali progettate per proteggere gli edifici dai danni sismici,
+                        utilizzando tecniche anti-sismiche avanzate.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insulation Section -->
+        <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+            <h3 style="color:#d87d4a;">Isolamento Termico e Acustico</h3>
+            <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+                <img src="assets/images/insulation.png" alt="Isolamento Termico e Acustico" style="width:300px; max-width:100%; border-radius:8px;" />
+                <div>
+                    <p>
+                        Sistemi di isolamento esterno (cappotto termico) che migliorano l’efficienza energetica
+                        e il comfort interno.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Painting Section -->
+        <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+            <h3 style="color:#d87d4a;">Intonacatura e Verniciatura di Facciata</h3>
+            <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+                <img src="assets/images/painting.png" alt="Intonacatura e Verniciatura di Facciata" style="width:300px; max-width:100%; border-radius:8px;" />
+                <div>
+                    <p>
+                        Finiture esterne di alta qualità, restaurando edifici con rivestimenti duraturi
+                        e resistenti agli agenti atmosferici.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <p>
+            Forniamo soluzioni durevoli e conformi alle normative, su misura per le esigenze specifiche
+            del tuo edificio—sia residenziale, commerciale o pubblico.
+        </p>
+    </div>
+
+    <div id="interior" class="tab-content">
+        <h2 style="color:#3a3a3a;">Ristrutturazione e Allestimenti Interni</h2>
+        <p>
+            Dal concept iniziale alla finitura finale, Alba S.r.l trasforma gli spazi interni con meticolosa
+            attenzione ai dettagli. I nostri servizi includono:
+        </p>
+        <ul>
+            <li>Ristrutturazione interna completa</li>
+            <li>Installazione pavimenti (piastrelle, legno, resina)</li>
+            <li>Cartongesso, controsoffitti e soluzioni acustiche</li>
+            <li>Imbiancatura, illuminazione e coordinamento design d’interni</li>
+        </ul>
+        <p>
+            Aiutiamo aziende e proprietari a reinventare i loro interni in spazi moderni, funzionali e accoglienti.
+        </p>
+        <!-- [SPACE FOR INTERIOR PROJECT IMAGES] -->
+    </div>
+
+    <div id="partners" class="tab-content">
+        <h2 style="color:#3a3a3a;">I Nostri Partner e Clienti</h2>
+        <p>
+            Alba S.r.l collabora con studi di architettura leader, sviluppatori immobiliari e clienti commerciali
+            in tutta Italia. Siamo orgogliosi di partnership a lungo termine basate su trasparenza, affidabilità
+            e crescita reciproca.
+        </p>
+        <p>
+            Abbiamo contribuito a:
+        </p>
+        <ul>
+            <li>Ristrutturazioni di uffici aziendali</li>
+            <li>Miglioramenti degli spazi commerciali</li>
+            <li>Ristrutturazioni nel settore dell’ospitalità</li>
+            <li>Manutenzione delle infrastrutture pubbliche</li>
+        </ul>
+        <p>
+            Unisciti alla nostra rete di collaboratori di fiducia.
+        </p>
+        <!-- [SPACE FOR LOGOS OR PHOTOS WITH PARTNERS] -->
+    </div>
+
+    <div id="contact" class="tab-content">
+        <h2 style="color:#3a3a3a;">Contattaci</h2>
+        <p>
+            Interessato a collaborare con Alba S.r.l o a richiedere una consulenza gratuita? Siamo a tua disposizione.
+        </p>
+        <ul>
+            <li><strong>Email:</strong> albasrledilizia2000@gmail.com</li>
+            <li><strong>Telefono:</strong> +39 345 678 9012</li>
+            <li><strong>Indirizzo:</strong> VIA GAETANO SALVEMINI 9, 20161 Milano (MI)</li>
+        </ul>
+        <p>
+            Oppure compila semplicemente il modulo qui sotto e il nostro team ti risponderà entro 24 ore.
+        </p>
+
+        <!-- Contact Form starts here -->
+        <form action="https://formsubmit.co/albasrledilizia2000@gmail.com" method="POST" style="max-width:500px; margin-top:1.5rem;">
+            <!-- Disable Formsubmit’s CAPTCHA (optional) -->
+            <input type="hidden" name="_captcha" value="true" />
+
+            <label for="name" style="display:block; margin-bottom:0.5rem;">
+                Nome:
+                <input type="text"
+                       id="name"
+                       name="name"
+                       required
+                       style="width:100%; padding:0.5rem; margin-top:0.25rem; border:1px solid #ccc; border-radius:4px;"
+                       placeholder="Il tuo nome completo" />
+            </label>
+
+            <label for="email" style="display:block; margin-bottom:0.5rem;">
+                Email:
+                <input type="email"
+                       id="email"
+                       name="email"
+                       required
+                       style="width:100%; padding:0.5rem; margin-top:0.25rem; border:1px solid #ccc; border-radius:4px;"
+                       placeholder="tuo@esempio.com" />
+            </label>
+
+            <label for="message" style="display:block; margin-bottom:0.5rem;">
+                Messaggio:
+                <textarea id="message"
+                          name="message"
+                          rows="5"
+                          required
+                          style="width:100%; padding:0.5rem; margin-top:0.25rem; border:1px solid #ccc; border-radius:4px;"
+                          placeholder="Come possiamo aiutarti?"></textarea>
+            </label>
+
+            <button type="submit"
+                    style="
+                        margin-top:1rem;
+                        padding:0.75rem 1.5rem;
+                        background-color:#007bff;
+                        color:#fff;
+                        border:none;
+                        border-radius:4px;
+                        cursor:pointer;
+                        font-size:1rem;
+                    ">
+                Invia Messaggio
+            </button>
+        </form>
+        <!-- Contact Form ends here -->
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contattaci | Telefono: +39 000 000 000 | Email: info@example.com</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.tab-content');
+        function activateTab(name) {
+            tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+            contents.forEach(c => c.classList.toggle('active', c.id === name));
+        }
+        tabs.forEach(tab => tab.addEventListener('click', () => activateTab(tab.dataset.tab)));
+        document.getElementById('logo-link').addEventListener('click', e => {
+            e.preventDefault();
+            activateTab('home');
+        });
+
+        // Auto-slide only if on Home
+        let interval;
+        function startCarousel() {
+            const slides = document.querySelector('.slides');
+            const count = document.querySelectorAll('.slide').length;
+            let idx = 0;
+            interval = setInterval(() => {
+                idx = (idx + 1) % count;
+                slides.style.transform = `translateX(-${idx * 100}vw)`;
+            }, 4000);
+        }
+        function stopCarousel() {
+            clearInterval(interval);
+        }
+        // Manage carousel on tab change
+        tabs.forEach(tab => tab.addEventListener('click', () => {
+            if (tab.dataset.tab === 'home') startCarousel();
+            else stopCarousel();
+        }));
+        // Start on load
+        startCarousel();
+    </script>
+    <script>
+        const slides = document.querySelector('.slides');
+        const slideElements = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let index = 0;
+
+        function showSlide(i) {
+            if (i >= slideElements.length) index = 0;
+            if (i < 0) index = slideElements.length - 1;
+
+            slides.style.transform = `translateX(-${index * 100}%)`;
+
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+        }
+
+        document.querySelector('.next').addEventListener('click', () => {
+            index++;
+            showSlide(index);
+        });
+
+        document.querySelector('.prev').addEventListener('click', () => {
+            index--;
+            showSlide(index);
+        });
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                index = parseInt(dot.getAttribute('data-slide'));
+                showSlide(index);
+            });
+        });
+
+        showSlide(index);
+    </script>
+</body>
+</html>
