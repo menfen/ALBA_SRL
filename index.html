@@ -13,7 +13,7 @@
 			  /* Full-width carousel */
 			  .carousel-container {
 				width: 100%;
-				height: auto;           /* let images dictate height */
+				height: auto;                               /* let images dictate height */
 				margin: 1rem 0;
 			  }
 			  .slides, .slide {
@@ -22,7 +22,6 @@
 			  .slide img {
 				height: auto;
 			  }
-
 			  /* Tabs wrap to two-per-row */
 			  .tab-container {
 				flex-wrap: wrap;
@@ -39,19 +38,23 @@
 				  gap: 0.5rem;
 				}
 				header > div {
-				  width: 100%;
-				  display: flex;
-				  justify-content: center;
-				  align-items: center;
+				  flex-direction: column;
+				  align-items: flex-start;              /* children span full width, left aligned */
+				  gap: 0.5rem;
 				}
 				/* Logo & slogan container */
 				header > div:first-child {
-				  flex-direction: column;
-				  gap: 0.25rem;
+				  display: flex;
+				  flex-direction: row;                   /* logo left, slogan on its right */
+				  align-items: flex-end;                 /* slogan bottom-aligned to logo */
+				  width: 100%;
+				  gap: 0.5rem;
 				}
 				/* Social + lang switcher container */
-				header > div:last-child {
-				  flex-wrap: wrap;
+				header > div:last-child {	
+					display: flex;
+				  justify-content: flex-end;
+				  width: 100%;
 				  gap: 0.5rem;
 				}
 				/* Shrink logo */
