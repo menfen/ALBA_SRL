@@ -7,6 +7,124 @@
 
     <!-- CSS -->
     <style>
+		
+		/* Mobile responsiveness */
+			@media (max-width: 768px) {
+			  /* Full-width carousel */
+			  .carousel-container {
+				width: 100%;
+				height: auto;                               /* let images dictate height */
+				margin: 1rem 0;
+			  }
+			  .slides, .slide {
+				height: auto;
+			  }
+			  .slide img {
+				height: auto;
+			  }
+			  /* Tabs wrap to two-per-row */
+			  .tab-container {
+				flex-wrap: wrap;
+			  }
+			  .tab {
+				flex: 1 1 50%;
+				font-size: 0.9rem;
+				padding: 12px;
+			  }
+				/* Mobile header layout */
+				header {
+				  display: flex;
+				  flex-direction: column;
+				  align-items: flex-start;
+				  gap: 0.5rem;
+				  padding: 0.5rem 1rem;
+				}
+				.logo-row {
+				  width: 100%;
+				}
+				.logo-row img {
+				  width: 80px;
+				  height: 80px;
+				}
+				.actions-row {
+				  display: flex;
+				  align-items: center;
+				  justify-content: space-between;
+				  width: 100%;
+				}
+				.slogan {
+				  flex: 1;
+				  text-align: center;
+				  margin: 0;
+				  font-size: 0.9rem;
+				}
+				.social-lang {
+				  display: flex;
+				  align-items: center;
+				  gap: 0.5rem;
+				}
+				.social-lang img {
+				  width: 24px;
+				  height: 24px;
+				}
+				.lang-switcher {
+				  display: flex;
+				  align-items: center;
+				  font-size: 0.85rem;
+				  gap: 0.25rem;
+				}
+			  <!-- /* Sections stack vertically */
+			  section {
+				padding: 1rem;
+			  }
+			  section > div {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+			  }
+			  section img {
+				width: 100%;
+				height: auto;
+				margin: 0 auto;
+			  } -->
+			}
+
+			/* Even smaller phones */
+			@media (max-width: 480px) {
+			  header, footer {
+				padding: 0.5rem;
+			  }
+			  header img {
+				width: 80px;
+				height: 80px;
+			  }
+			  header .slogan {
+				font-size: 0.9rem;
+			  }
+			  .tab {
+				flex: 1 1 100%;
+				font-size: 0.85rem;
+			  }
+			  .lang-switcher {
+				font-size: 0.85rem;
+			  }
+			  form, .tab-content {
+				padding: 1rem;
+			  }
+			}
+		
+		/* hide sections until scrolled into view */
+			.section { opacity: 0; }
+
+		/* Fade-up animation */
+		@keyframes fadeInUp {
+		  from { opacity: 0; transform: translateY(20px); }
+		  to   { opacity: 1; transform: translateY(0); }
+		}
+		.fade-in {
+		  animation: fadeInUp 2s forwards;
+		}
+		
         /* Base */
         body {
             font-family: Arial, sans-serif;
@@ -109,13 +227,16 @@
 
         /* Carousel (Home only) */
         .carousel-container {
-            width: 1000px;
-            height: 600px;
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
             margin: 1rem auto;
             overflow: hidden;
             border-radius: 8px;
             position: relative;
+            aspect-ratio: 5 / 3;
         }
+
         .carousel {
             width: 100%;
             height: 100%;
@@ -264,61 +385,69 @@
         </div>
 
         <!-- Section 1: Mission -->
-        <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
-            <h2 style="color: #d87d4a;">Maestria e Innovazione</h2>
-            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
-                <div style="flex: 1;">
+        <section class="section"
+         style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+			<h3 class="fade-in delay-2" style="color:#d87d4a;" >Maestria e Innovazione</h2>
+            <div class="fade-in delay-3"
+				style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+				<div style="flex:1;">
                     <p>
                         Presso Alba S.r.l, uniamo tradizione e tecniche edilizie moderne
                         per offrire soluzioni di ristrutturazione sostenibili e di grande impatto visivo.
                         Il nostro punto di forza è l’attenzione al dettaglio e l’impegno per la soddisfazione del cliente.
                     </p>
                 </div>
-                <img src="assets/images/Plumber.png" alt="Artigianato" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+                <img class="fade-in delay-2" src="assets/images/Plumber.png" alt="Artigianato" style="width: 300px; max-width: 100%; border-radius: 8px;" />
             </div>
         </section>
 
         <!-- Section 2: Quality Assurance -->
-        <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
-            <h2 style="color: #d87d4a;">Qualità e Materiali Certificati</h2>
-            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
-                <div style="flex: 1;">
+        <section class="section"
+         style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+			<h3 class="fade-in delay-2" style="color:#d87d4a;">Qualità e Materiali Certificati</h2>
+            <div class="fade-in delay-3"
+				style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+				<div style="flex:1;">
                     <p>
                         Lavoriamo solo con materiali e fornitori certificati. Ogni progetto è realizzato per durare,
                         con processi di controllo qualità integrati in ogni fase—dalla progettazione alla consegna finale.
                     </p>
                 </div>
-                <img src="assets/images/Overview.png" alt="Ispezione Qualità" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+                <img class="fade-in delay-2" src="assets/images/Overview.png" alt="Ispezione Qualità" style="width: 300px; max-width: 100%; border-radius: 8px;" />
             </div>
         </section>
 
         <!-- Section 3: Focus on Businesses -->
-        <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
-            <h2 style="color: #d87d4a;">Soluzioni Personalizzate per le Aziende</h2>
-            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
-                <div style="flex: 1;">
+        <section class="section"
+         style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+			<h3 class="fade-in delay-2" style="color:#d87d4a;">Soluzioni Personalizzate per le Aziende</h2>
+            <div class="fade-in delay-3"
+				style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+				<div style="flex:1;">
                     <p>
                         Che si tratti di una boutique, di una sede aziendale o di una struttura ricettiva,
                         comprendiamo le esigenze specifiche degli spazi commerciali.
                         Le nostre soluzioni su misura riducono i tempi di fermo e garantiscono continuità operativa.
                     </p>
                 </div>
-                <img src="assets/images/Extrior 1.png" alt="Servizi Commerciali" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+                <img class="fade-in delay-2" src="assets/images/Extrior 1.png" alt="Servizi Commerciali" style="width: 300px; max-width: 100%; border-radius: 8px;" />
             </div>
         </section>
 
         <!-- Section 4: Nationwide Reach -->
-        <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
-            <h2 style="color: #d87d4a;">Serviamo Tutta l’Lombardia</h2>
-            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
-                <div style="flex: 1;">
+        <section class="section"
+         style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+			<h3 class="fade-in delay-2" style="color:#d87d4a;">Serviamo Tutta l’Lombardia</h2>
+            <div class="fade-in delay-3"
+				style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+				<div style="flex:1;">
                     <p>
                         Con sede a Milano, Alba S.r.l garantisce eccellenza nelle ristrutturazioni in tutto il Paese.
                         La nostra rete di professionisti di fiducia ci permette di servire clienti in ogni regione
                         con la stessa dedizione ed esperienza.
                     </p>
                 </div>
-                <img src="assets/images/Extrior 2.png" alt="Operazioni Nazionali" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+                <img class="fade-in delay-2" src="assets/images/Extrior 2.png" alt="Operazioni Nazionali" style="width: 300px; max-width: 100%; border-radius: 8px;" />
             </div>
         </section>
     </div>
@@ -332,44 +461,56 @@
         </p>
 
         <!-- Seismic Section -->
-        <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
-            <h3 style="color:#d87d4a;">Lavori di Rinforzo Sismico</h3>
-            <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
-                <img src="assets/images/seismic.png" alt="Rinforzo Sismico" style="width:300px; max-width:100%; border-radius:8px;" />
+        <section class="section"
+         style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+			<h3 class="fade-in delay-2" style="color:#d87d4a;">Lavori di Rinforzo Sismico</h3>
+            <div class="fade-in delay-3"
+				style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+				<div style="flex:1;">
+                <img class="fade-in delay-2" src="assets/images/seismic.png" alt="Rinforzo Sismico" style="width:300px; max-width:100%; border-radius:8px;" />
                 <div>
                     <p>
                         Migliorie strutturali progettate per proteggere gli edifici dai danni sismici,
                         utilizzando tecniche anti-sismiche avanzate.
                     </p>
                 </div>
+				</div>
             </div>
         </section>
 
         <!-- Insulation Section -->
-        <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
-            <h3 style="color:#d87d4a;">Isolamento Termico e Acustico</h3>
-            <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
-                <img src="assets/images/insulation.png" alt="Isolamento Termico e Acustico" style="width:300px; max-width:100%; border-radius:8px;" />
+        <section class="section"
+         style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+			<h3 class="fade-in delay-2" style="color:#d87d4a;">Isolamento Termico e Acustico</h3>
+            <div class="fade-in delay-3"
+				style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+				<div style="flex:1;">
+                <img class="fade-in delay-2" src="assets/images/insulation.png" alt="Isolamento Termico e Acustico" style="width:300px; max-width:100%; border-radius:8px;" />
                 <div>
                     <p>
                         Sistemi di isolamento esterno (cappotto termico) che migliorano l’efficienza energetica
                         e il comfort interno.
                     </p>
                 </div>
+				</div>
             </div>
         </section>
 
         <!-- Painting Section -->
-        <section style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
-            <h3 style="color:#d87d4a;">Intonacatura e Verniciatura di Facciata</h3>
-            <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
-                <img src="assets/images/painting.png" alt="Intonacatura e Verniciatura di Facciata" style="width:300px; max-width:100%; border-radius:8px;" />
+        <section class="section"
+         style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+			<h3 class="fade-in delay-2" style="color:#d87d4a;">Intonacatura e Verniciatura di Facciata</h3>
+            <div class="fade-in delay-3"
+				style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+				<div style="flex:1;">
+                <img class="fade-in delay-2" src="assets/images/painting.png" alt="Intonacatura e Verniciatura di Facciata" style="width:300px; max-width:100%; border-radius:8px;" />
                 <div>
                     <p>
                         Finiture esterne di alta qualità, restaurando edifici con rivestimenti duraturi
                         e resistenti agli agenti atmosferici.
                     </p>
                 </div>
+				</div>
             </div>
         </section>
 
@@ -561,5 +702,23 @@
 
         showSlide(index);
     </script>
+	
+	<script>
+	  const obsOptions = { threshold: 0.2 };
+	  const observer = new IntersectionObserver((entries, obs) => {
+		entries.forEach(entry => {
+		  if (entry.isIntersecting) {
+			entry.target.classList.add('fade-in');
+			obs.unobserve(entry.target);
+		  }
+		});
+	  }, obsOptions);
+
+	  document.querySelectorAll('.section').forEach(sec => {
+		observer.observe(sec);
+	  });
+	</script>
+
 </body>
+
 </html>
