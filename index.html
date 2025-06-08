@@ -7,6 +7,25 @@
 
     <!-- CSS -->
     <style>
+		
+		
+		/* Fade-in animation */
+			@keyframes fadeInUp {
+			  0%   { opacity: 0; transform: translateY(20px); }
+			  100% { opacity: 1; transform: translateY(0); }
+			}
+			.fade-in {
+			  opacity: 0;
+			  animation-name: fadeInUp;
+			  animation-duration: 0.6s;
+			  animation-fill-mode: forwards;
+			}
+			.fade-in.delay-1 { animation-delay: 0.2s; }
+			.fade-in.delay-2 { animation-delay: 0.4s; }
+			.fade-in.delay-3 { animation-delay: 0.6s; }
+		
+	
+		
         /* Base */
         body {
             font-family: Arial, sans-serif;
@@ -253,17 +272,19 @@
         </div>
 
         <!-- Section 1: Mission -->
-        <section style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
-            <h2 style="color: #d87d4a;">Craftsmanship Meets Innovation</h2>
-            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
-                <div style="flex: 1;">
+        <section class="fade-in delay-1"
+         style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
+			<h3 class="fade-in delay-2" style="color:#d87d4a;">Craftsmanship Meets Innovation</h2>
+            <div class="fade-in delay-3"
+				style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+				<div style="flex:1;">
                     <p>
                         At Alba S.r.l, we bring together tradition and modern building techniques
                         to deliver sustainable, visually stunning renovation solutions. Our strength
                         lies in our detail-oriented execution and commitment to client satisfaction.
                     </p>
                 </div>
-                <img src="assets\images\home\Craftsmanship_Meets_Innovation.png" alt="Craftsmanship" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+                <img class="fade-in delay-2" src="assets\images\home\Craftsmanship_Meets_Innovation.png" alt="Craftsmanship" style="width: 300px; max-width: 100%; border-radius: 8px;" />
             </div>
         </section>
 
