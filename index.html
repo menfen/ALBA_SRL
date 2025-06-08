@@ -8,6 +8,70 @@
     <!-- CSS -->
     <style>
 		
+		/* Mobile responsiveness */
+			@media (max-width: 768px) {
+			  /* Full-width carousel */
+			  .carousel-container {
+				width: 100%;
+				height: auto;           /* let images dictate height */
+				margin: 1rem 0;
+			  }
+			  .slides, .slide {
+				height: auto;
+			  }
+			  .slide img {
+				height: auto;
+			  }
+
+			  /* Tabs wrap to two-per-row */
+			  .tab-container {
+				flex-wrap: wrap;
+			  }
+			  .tab {
+				flex: 1 1 50%;
+				font-size: 0.9rem;
+				padding: 12px;
+			  }
+
+			  /* Sections stack vertically */
+			  section {
+				padding: 1rem;
+			  }
+			  section > div {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+			  }
+			  section img {
+				width: 100%;
+				height: auto;
+				margin: 0 auto;
+			  }
+			}
+
+			/* Even smaller phones */
+			@media (max-width: 480px) {
+			  header, footer {
+				padding: 0.5rem;
+			  }
+			  header img {
+				width: 80px;
+				height: 80px;
+			  }
+			  header .slogan {
+				font-size: 0.9rem;
+			  }
+			  .tab {
+				flex: 1 1 100%;
+				font-size: 0.85rem;
+			  }
+			  .lang-switcher {
+				font-size: 0.85rem;
+			  }
+			  form, .tab-content {
+				padding: 1rem;
+			  }
+			}
 		
 		/* hide sections until scrolled into view */
 			.section { opacity: 0; }
@@ -18,7 +82,7 @@
 		  to   { opacity: 1; transform: translateY(0); }
 		}
 		.fade-in {
-		  animation: fadeInUp 0.8s forwards;
+		  animation: fadeInUp 2s forwards;
 		}
 		
         /* Base */
