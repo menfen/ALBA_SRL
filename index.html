@@ -172,7 +172,7 @@
             color: #3a3a3a;
             font-weight: bold;
             font-family: 'Georgia', serif;
-            align-self: flex-center;
+            align-self: center;
         }
 
         /* Language Switcher */
@@ -455,6 +455,15 @@
 				<!-- End Home page -->
     <!-- Exterior Tab -->
     <div id="exterior" class="tab-content">
+		<!-- Exterior Carousel -->
+		<div class="carousel-container">
+		  <div class="carousel">
+			<div class="slides" id="exteriorSlides"></div>
+			<button class="prev" id="prevExt">&#10094;</button>
+			<button class="next" id="nextExt">&#10095;</button>
+			<div class="indicators" id="extIndicators"></div>
+		  </div>
+		</div>
         <h2 style="color:#3a3a3a;">External Interventions and Facade Redevelopment</h2>
         <p>
             
@@ -477,12 +486,12 @@
             <div class="fade-in delay-3" style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
 				<div style="flex:1;">
                 <img class="fade-in delay-2" src="assets/images/exterior/SeismicReinforcementWork.png" alt="Seismic Reinforcement" style="width:300px; max-width:100%; border-radius:8px;" />
-                <div>
-                    <p>
+					<div>
+						<p>
                         Structural upgrades designed to protect buildings from earthquake damage,
                         using advanced anti-seismic techniques.
-                    </p>
-                </div>
+						</p>
+					</div>
 				</div>
             </div>
         </section>
@@ -528,8 +537,19 @@
             whether residential, commercial, or public.
         </p>
     </div>
-
+			<!-- End Exterior page -->
+			
     <div id="interior" class="tab-content">
+	
+			<!-- Interior Carousel -->
+		<div class="carousel-container">
+		  <div class="carousel">
+			<div class="slides" id="interiorSlides"></div>
+			<button class="prev" id="prevInt">&#10094;</button>
+			<button class="next" id="nextInt">&#10095;</button>
+			<div class="indicators" id="intIndicators"></div>
+		  </div>
+		</div>
         <h2 style="color:#3a3a3a;">Interior Renovation and Fit-Outs</h2>
         <p>
             From initial concept to final finish, Alba S.r.l transforms interior spaces with meticulous
@@ -547,7 +567,8 @@
         </p>
         <!-- [SPACE FOR INTERIOR PROJECT IMAGES] -->
     </div>
-
+			<!-- End Interior page -->
+			
     <div id="partners" class="tab-content">
         <h2 style="color:#3a3a3a;">Our Partners and Clients</h2>
         <p>
@@ -569,7 +590,8 @@
         </p>
         <!-- [SPACE FOR LOGOS OR PHOTOS WITH PARTNERS] -->
     </div>
-
+			<!-- End Partners page -->
+			
     <div id="contact" class="tab-content">
         <h2 style="color:#3a3a3a;">Get in Touch</h2>
         <p>
@@ -635,7 +657,8 @@
         </form>
         <!-- Contact Form ends here -->
     </div>
-
+			<!-- End Contact page -->
+			
     <!-- Footer -->
     <footer>
         <p>P.IVA 13141540966</p>
@@ -664,8 +687,8 @@
             let idx = 0;
             interval = setInterval(() => {
             showSlide(index + 1);
-            }, 4000);
-        }
+            }, 4000);        }
+        
         function stopCarousel() {
             clearInterval(interval);
         }
@@ -718,8 +741,8 @@ function initializeCarousel() {
         });
     });
 
-    showSlide(index);
-}
+    showSlide(index);  }
+
 initializeCarousel();
 
 
@@ -731,8 +754,8 @@ initializeCarousel();
     slides.style.transform = `translateX(-${index * 100}%)`;
 
     dots.forEach(dot => dot.classList.remove('active'));
-    dots[index].classList.add('active');
-}
+    dots[index].classList.add('active');   }
+
 
 
     document.querySelector('.next').addEventListener('click', () => {
@@ -753,6 +776,70 @@ initializeCarousel();
     });
 
     showSlide(index);
+	
+	  const exteriorImages = ['SeismicReinforcementWork.png','ThermalAndAcousticInsulation.png','PlasteringAndFacadePainting.png'];
+      const extSlides      = document.getElementById('exteriorSlides');
+      const extDots        = document.getElementById('extIndicators');
+
+      exteriorImages.forEach((name,i) => {
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        const img = document.createElement('img');
+        img.src = `assets/images/exterior/${name}`;
+        slide.appendChild(img);
+        extSlides.appendChild(slide);
+
+        const dot = document.createElement('span');
+        dot.className = 'dot';
+        dot.dataset.slide = i;
+        extDots.appendChild(dot);
+      });
+
+      let extIndex = 0;
+      function showExterior(i) {
+        const slides = extSlides.querySelectorAll('.slide');
+        const dots   = extDots.querySelectorAll('.dot');
+        extIndex = (i + slides.length) % slides.length;
+        extSlides.style.transform = `translateX(-${extIndex * 100}%)`;
+        dots.forEach(d => d.classList.toggle('active', +d.dataset.slide === extIndex));
+      }
+      document.getElementById('prevExt').onclick = () => showExterior(extIndex - 1);
+      document.getElementById('nextExt').onclick = () => showExterior(extIndex + 1);
+      extDots.querySelectorAll('.dot').forEach(d => d.onclick = () => showExterior(+d.dataset.slide));
+      showExterior(0);
+	
+	  const interiorImages = ['Room1.png','Room2.png','Room3.png'];
+      const intSlides      = document.getElementById('interiorSlides');
+      const intDots        = document.getElementById('intIndicators');
+
+      interiorImages.forEach((name,i) => {
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        const img = document.createElement('img');
+        img.src = `assets/images/interior/${name}`;
+        slide.appendChild(img);
+        intSlides.appendChild(slide);
+
+        const dot = document.createElement('span');
+        dot.className = 'dot';
+        dot.dataset.slide = i;
+        intDots.appendChild(dot);
+      });
+
+      let intIndex = 0;
+      function showInterior(i) {
+        const slides = intSlides.querySelectorAll('.slide');
+        const dots   = intDots.querySelectorAll('.dot');
+        intIndex = (i + slides.length) % slides.length;
+        intSlides.style.transform = `translateX(-${intIndex * 100}%)`;
+        dots.forEach(d => d.classList.toggle('active', +d.dataset.slide === intIndex));
+      }
+      document.getElementById('prevInt').onclick = () => showInterior(intIndex - 1);
+      document.getElementById('nextInt').onclick = () => showInterior(intIndex + 1);
+      intDots.querySelectorAll('.dot').forEach(d => d.onclick = () => showInterior(+d.dataset.slide));
+      showInterior(0);
+	  
+	  
 </script>
 
 <script>
