@@ -818,7 +818,7 @@ initializeCarousel();
 	   
 
 	   // Exterior page carousel logic
-	  const exteriorImages = ['image2.png','image3.png','image4.png'];
+	  const exteriorImages = ['carousel1.png','carousel2.png','carousel3.png'];
       const extSlides      = document.getElementById('exteriorSlides');
       const extDots        = document.getElementById('extIndicators');
 
@@ -826,7 +826,7 @@ initializeCarousel();
         const slide = document.createElement('div');
         slide.className = 'slide';
         const img = document.createElement('img');
-        img.src = `assets/images/home/Carousel/${filename}`;
+        img.src = `assets/images/exterior/Carousel/${filename}`;
         slide.appendChild(img);
         extSlides.appendChild(slide);
 
@@ -851,7 +851,7 @@ initializeCarousel();
 	  
 	  
 	  // Interior page carousel logic
-	  const interiorImages = ['image6.png','Room2.png','Room3.png'];
+	  const interiorImages = ['carousel1.png','carousel2.png','carousel3.png'];
       const intSlides      = document.getElementById('interiorSlides');
       const intDots        = document.getElementById('intIndicators');
 
@@ -859,7 +859,7 @@ initializeCarousel();
         const slide = document.createElement('div');
         slide.className = 'slide';
         const img = document.createElement('img');
-        img.src = `assets/images/home/Carousel/${filename}`;
+        img.src = `assets/images/interior/Carousel/${filename}`;
         slide.appendChild(img);
         intSlides.appendChild(slide);
 
