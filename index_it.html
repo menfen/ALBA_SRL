@@ -818,72 +818,47 @@ initializeCarousel();
     showSlide(index);
 	   
 
-	   // Exterior page carousel logic
-	  const exteriorImages = ['carousel1.png','carousel2.png','carousel3.png'];
-      const extSlides      = document.getElementById('exteriorSlides');
-      const extDots        = document.getElementById('extIndicators');
+		// ===== Exterior page carousel logic =====
+		const exteriorImages = ['carousel1.png','carousel2.png','carousel3.png'];
+		const extSlides      = document.getElementById('exteriorSlides');
+		const extDots        = document.getElementById('extIndicators');
 
-      exteriorImages.forEach((name,i) => {
-        const slide = document.createElement('div');
-        slide.className = 'slide';
-        const img = document.createElement('img');
-        img.src = `assets/images/exterior/Carousel/${filename}`;
-        slide.appendChild(img);
-        extSlides.appendChild(slide);
+		exteriorImages.forEach((name, i) => {
+		  const slide = document.createElement('div');
+		  slide.className = 'slide';
+		  const img = document.createElement('img');
+		  // <-- use `name`, not `filename`
+		  img.src = `assets/images/exterior/Carousel/${name}`;
+		  slide.appendChild(img);
+		  extSlides.appendChild(slide);
 
-        const dot = document.createElement('span');
-        dot.className = 'dot';
-        dot.dataset.slide = i;
-        extDots.appendChild(dot);
-      });
-
-      let extIndex = 0;
-      function showExterior(i) {
-        const slides = extSlides.querySelectorAll('.slide');
-        const dots   = extDots.querySelectorAll('.dot');
-        extIndex = (i + slides.length) % slides.length;
-        extSlides.style.transform = `translateX(-${extIndex * 100}%)`;
-        dots.forEach(d => d.classList.toggle('active', +d.dataset.slide === extIndex));
-      }
-      document.getElementById('prevExt').onclick = () => showExterior(extIndex - 1);
-      document.getElementById('nextExt').onclick = () => showExterior(extIndex + 1);
-      extDots.querySelectorAll('.dot').forEach(d => d.onclick = () => showExterior(+d.dataset.slide));
-      showExterior(0);
+		  const dot = document.createElement('span');
+		  dot.className = 'dot';
+		  dot.dataset.slide = i;
+		  extDots.appendChild(dot);
+		});
 	  
 	  
-	  // Interior page carousel logic
-	  const interiorImages = ['carousel1.png','carousel2.png','carousel3.png'];
-      const intSlides      = document.getElementById('interiorSlides');
-      const intDots        = document.getElementById('intIndicators');
+		// ===== Interior page carousel logic =====
+		const interiorImages = ['carousel1.png','carousel2.png','carousel3.png'];
+		const intSlides      = document.getElementById('interiorSlides');
+		const intDots        = document.getElementById('intIndicators');
 
-      interiorImages.forEach((name,i) => {
-        const slide = document.createElement('div');
-        slide.className = 'slide';
-        const img = document.createElement('img');
-        img.src = `assets/images/interior/Carousel/${filename}`;
-        slide.appendChild(img);
-        intSlides.appendChild(slide);
+		interiorImages.forEach((name, i) => {
+		  const slide = document.createElement('div');
+		  slide.className = 'slide';
+		  const img = document.createElement('img');
+		  // <-- again, use `name`
+		  img.src = `assets/images/interior/Carousel/${name}`;
+		  slide.appendChild(img);
+		  intSlides.appendChild(slide);
 
-        const dot = document.createElement('span');
-        dot.className = 'dot';
-        dot.dataset.slide = i;
-        intDots.appendChild(dot);
-      });
-
-      let intIndex = 0;
-      function showInterior(i) {
-        const slides = intSlides.querySelectorAll('.slide');
-        const dots   = intDots.querySelectorAll('.dot');
-        intIndex = (i + slides.length) % slides.length;
-        intSlides.style.transform = `translateX(-${intIndex * 100}%)`;
-        dots.forEach(d => d.classList.toggle('active', +d.dataset.slide === intIndex));
-      }
-      document.getElementById('prevInt').onclick = () => showInterior(intIndex - 1);
-      document.getElementById('nextInt').onclick = () => showInterior(intIndex + 1);
-      intDots.querySelectorAll('.dot').forEach(d => d.onclick = () => showInterior(+d.dataset.slide));
-      showInterior(0);
-	  
-	  
+		  const dot = document.createElement('span');
+		  dot.className = 'dot';
+		  dot.dataset.slide = i;
+		  intDots.appendChild(dot);
+		});
+		
 </script>
 
 <script>
