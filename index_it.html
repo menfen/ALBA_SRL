@@ -705,6 +705,8 @@
 
     <!-- JavaScript -->
     <script>
+	
+	    // Home page carousel logic
         const tabs = document.querySelectorAll('.tab');
         const contents = document.querySelectorAll('.tab-content');
         function activateTab(name) {
@@ -724,10 +726,9 @@
             const count = document.querySelectorAll('.slide').length;
             let idx = 0;
             interval = setInterval(() => {
-                idx = (idx + 1) % count;
-                slides.style.transform = `translateX(-${idx * 100}vw)`;
-            }, 4000);
-        }
+            showSlide(index + 1);
+            }, 4000);        }
+        
         function stopCarousel() {
             clearInterval(interval);
         }
@@ -740,56 +741,166 @@
         startCarousel();
     </script>
     <script>
-        const slides = document.querySelector('.slides');
-        const slideElements = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        let index = 0;
+    const imageFilenames = Array.from({ length: 4 }, (_, i) => `carousel${i + 1}.png`);
 
-        function showSlide(i) {
-            if (i >= slideElements.length) index = 0;
-            if (i < 0) index = slideElements.length - 1;
 
-            slides.style.transform = `translateX(-${index * 100}%)`;
+    const slidesContainer = document.getElementById('dynamicSlides');
+    const indicatorsContainer = document.getElementById('carouselIndicators');
 
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[index].classList.add('active');
-        }
+    // Create slides and dots
+    imageFilenames.forEach((filename, i) => {
+        // Slide
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        const img = document.createElement('img');
+        img.src = `assets/images/home/Carousel/${filename}`;
+        img.alt = `Slide ${i + 1}`;
+        slide.appendChild(img);
+        slidesContainer.appendChild(slide);
 
-        document.querySelector('.next').addEventListener('click', () => {
-            index++;
-            showSlide(index);
+        // Dot
+        const dot = document.createElement('span');
+        dot.className = 'dot';
+        dot.setAttribute('data-slide', i);
+        indicatorsContainer.appendChild(dot);
+    });
+
+    // Now setup carousel logic
+    const slides = document.querySelector('.slides');
+    let index = 0;
+let slideElements, dots;
+
+function initializeCarousel() {
+    slideElements = document.querySelectorAll('.slide');
+    dots = document.querySelectorAll('.dot');
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const i = parseInt(dot.getAttribute('data-slide'));
+            showSlide(i);
         });
+    });
 
-        document.querySelector('.prev').addEventListener('click', () => {
-            index--;
-            showSlide(index);
-        });
+    showSlide(index);  }
 
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                index = parseInt(dot.getAttribute('data-slide'));
-                showSlide(index);
-            });
-        });
+initializeCarousel();
 
+
+    function showSlide(i) {
+    index = i;
+    if (index >= slideElements.length) index = 0;
+    if (index < 0) index = slideElements.length - 1;
+
+    slides.style.transform = `translateX(-${index * 100}%)`;
+
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index].classList.add('active');   }
+
+
+
+    document.querySelector('.next').addEventListener('click', () => {
+        index++;
         showSlide(index);
-    </script>
-	
-	<script>
-	  const obsOptions = { threshold: 0.2 };
-	  const observer = new IntersectionObserver((entries, obs) => {
-		entries.forEach(entry => {
-		  if (entry.isIntersecting) {
-			entry.target.classList.add('fade-in');
-			obs.unobserve(entry.target);
-		  }
-		});
-	  }, obsOptions);
+    });
 
-	  document.querySelectorAll('.section').forEach(sec => {
-		observer.observe(sec);
-	  });
-	</script>
+    document.querySelector('.prev').addEventListener('click', () => {
+        index--;
+        showSlide(index);
+    });
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            index = parseInt(dot.getAttribute('data-slide'));
+            showSlide(index);
+        });
+    });
+
+    showSlide(index);
+	   
+
+	   // Exterior page carousel logic
+	  const exteriorImages = ['carousel1.png','carousel2.png','carousel3.png'];
+      const extSlides      = document.getElementById('exteriorSlides');
+      const extDots        = document.getElementById('extIndicators');
+
+      exteriorImages.forEach((name,i) => {
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        const img = document.createElement('img');
+        img.src = `assets/images/exterior/Carousel/${filename}`;
+        slide.appendChild(img);
+        extSlides.appendChild(slide);
+
+        const dot = document.createElement('span');
+        dot.className = 'dot';
+        dot.dataset.slide = i;
+        extDots.appendChild(dot);
+      });
+
+      let extIndex = 0;
+      function showExterior(i) {
+        const slides = extSlides.querySelectorAll('.slide');
+        const dots   = extDots.querySelectorAll('.dot');
+        extIndex = (i + slides.length) % slides.length;
+        extSlides.style.transform = `translateX(-${extIndex * 100}%)`;
+        dots.forEach(d => d.classList.toggle('active', +d.dataset.slide === extIndex));
+      }
+      document.getElementById('prevExt').onclick = () => showExterior(extIndex - 1);
+      document.getElementById('nextExt').onclick = () => showExterior(extIndex + 1);
+      extDots.querySelectorAll('.dot').forEach(d => d.onclick = () => showExterior(+d.dataset.slide));
+      showExterior(0);
+	  
+	  
+	  // Interior page carousel logic
+	  const interiorImages = ['carousel1.png','carousel2.png','carousel3.png'];
+      const intSlides      = document.getElementById('interiorSlides');
+      const intDots        = document.getElementById('intIndicators');
+
+      interiorImages.forEach((name,i) => {
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        const img = document.createElement('img');
+        img.src = `assets/images/interior/Carousel/${filename}`;
+        slide.appendChild(img);
+        intSlides.appendChild(slide);
+
+        const dot = document.createElement('span');
+        dot.className = 'dot';
+        dot.dataset.slide = i;
+        intDots.appendChild(dot);
+      });
+
+      let intIndex = 0;
+      function showInterior(i) {
+        const slides = intSlides.querySelectorAll('.slide');
+        const dots   = intDots.querySelectorAll('.dot');
+        intIndex = (i + slides.length) % slides.length;
+        intSlides.style.transform = `translateX(-${intIndex * 100}%)`;
+        dots.forEach(d => d.classList.toggle('active', +d.dataset.slide === intIndex));
+      }
+      document.getElementById('prevInt').onclick = () => showInterior(intIndex - 1);
+      document.getElementById('nextInt').onclick = () => showInterior(intIndex + 1);
+      intDots.querySelectorAll('.dot').forEach(d => d.onclick = () => showInterior(+d.dataset.slide));
+      showInterior(0);
+	  
+	  
+</script>
+
+<script>
+  const obsOptions = { threshold: 0.2 };
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, obsOptions);
+
+  document.querySelectorAll('.section').forEach(sec => {
+    observer.observe(sec);
+  });
+</script>
 
 </body>
 
