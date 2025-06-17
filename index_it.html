@@ -11,7 +11,13 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
 	<link rel="manifest" href="/site.webmanifest">
-	
+	<link
+	  rel="stylesheet"
+	  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+	  integrity="sha512-KyZXEAg3QhqLMpG8r+Knujsl5+5hb7wX3RzByBfshL7TbnlLdGR+0e1p0kvhJd+3OZMH61bwcf3juNwp1zqjIiw=="
+	  crossorigin="anonymous"
+	  referrerpolicy="no-referrer"
+	/>
     <!-- CSS -->
     <style>
 		
@@ -337,6 +343,9 @@
 
         <div style="display: flex; gap: 1rem; align-items: center;">
             <!-- Social Icons -->
+			<a href="https://wa.me/393456789012" target="_blank" title="Chat on WhatsApp">
+			  <img src="assets/images/whatsapp.png" alt="WhatsApp" style="width:24px; height:24px;"/>
+			</a>
             <a href="https://www.linkedin.com" target="_blank" title="LinkedIn">
                 <img src="assets/images/linkedin.png" alt="LinkedIn" style="width: 24px; height: 24px;" />
             </a>
@@ -638,9 +647,10 @@
         </p>
         <ul>
             <li><strong>Email:</strong> albasrledilizia2000@gmail.com</li>
-            <li><strong>Telefono:</strong> +39 338 427 0682</li>
+            <li><strong>Telefono:</strong> +39 338 427 0682</li> 
             <li><strong>Indirizzo:</strong> VIA GAETANO SALVEMINI 9, 20161 Milano (MI)</li>
         </ul>
+		<i class="fab fa-whatsapp"></i>
         <p>
             Oppure compila semplicemente il modulo qui sotto e il nostro team ti risponderà entro 24 ore.
         </p>
@@ -827,11 +837,9 @@ initializeCarousel();
 		  const slide = document.createElement('div');
 		  slide.className = 'slide';
 		  const img = document.createElement('img');
-		  // <-- use `name`, not `filename`
 		  img.src = `assets/images/exterior/Carousel/${name}`;
 		  slide.appendChild(img);
 		  extSlides.appendChild(slide);
-
 		  const dot = document.createElement('span');
 		  dot.className = 'dot';
 		  dot.dataset.slide = i;
@@ -848,7 +856,6 @@ initializeCarousel();
 		  const slide = document.createElement('div');
 		  slide.className = 'slide';
 		  const img = document.createElement('img');
-		  // <-- again, use `name`
 		  img.src = `assets/images/interior/Carousel/${name}`;
 		  slide.appendChild(img);
 		  intSlides.appendChild(slide);
