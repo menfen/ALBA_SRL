@@ -360,8 +360,9 @@
             </a>
             <!-- Language Switcher -->
             <div class="lang-switcher">
-				<a href="index.html">EN</a><span>|</span><a href="index_it.html">IT</a>
-			</div>
+                <a href="#" data-lang="en">EN</a><span>|</span><a href="#" data-lang="it">IT</a>
+            </div>
+
 		</div>
 	</header>
 
@@ -908,7 +909,8 @@ switchLanguage(currentLang);
 document.querySelectorAll('.lang-switcher a').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    const lang = link.textContent.trim().toLowerCase();
+    //const lang = link.textContent.trim().toLowerCase();
+    const lang = link.getAttribute('data-lang');
     currentLang = lang;
     switchLanguage(lang);
   });
