@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -344,7 +344,6 @@
             data-it="Dalla facciata all'interno: rinnoviamo i tuoi edifici">
             From the Facade to the interior: we renovate your buildings
             </p>
-
         </div>
 
         <div style="display: flex; gap: 1rem; align-items: center;">
@@ -368,12 +367,13 @@
 
     <!-- Tabs -->
     <div class="tab-container">
-        <button class="tab active" data-tab="home">Home</button>
-        <button class="tab" data-tab="exterior">Exterior</button>
-        <button class="tab" data-tab="interior">Interior</button>
-        <button class="tab" data-tab="partners">Partners</button>
-        <button class="tab" data-tab="contact">Contact Us</button>
+        <button class="tab active lang" data-tab="home" data-en="Home" data-it="Home">Home</button>
+        <button class="tab lang" data-tab="exterior" data-en="Exterior" data-it="Esterni">Exterior</button>
+        <button class="tab lang" data-tab="interior" data-en="Interior" data-it="Interni">Interior</button>
+        <button class="tab lang" data-tab="partners" data-en="Partners" data-it="Collaborazioni">Partners</button>
+        <button class="tab lang" data-tab="contact" data-en="Contact Us" data-it="Contattaci">Contact Us</button>
     </div>
+
 
     <!-- Tab contents -->
     <div id="home" class="tab-content active">
@@ -393,87 +393,39 @@
         <!-- Section 1: Mission -->
         <section class="section"
          style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
-			<h3 class="fade-in delay-2" style="color:#d87d4a;">About us</h2>
+			<h2 class="fade-in delay-2 lang" style="color:#d87d4a;" 
+                data-en="About Us" 
+                data-it="Chi Siamo">
+                About Us
+            </h2>
+
             <div class="fade-in delay-3"
 				style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
 				<div style="flex:1;">
-                    <p> class= "lang" 
+                    <p class= "lang" 
                         data-en="ALBA S.r.l. is a company specialized in renovations, restorations and technical installations.
                             We operate throughout Italy with an approach oriented towards quality, punctuality and customer satisfaction.
 
                             We support architects, companies, public and private entities in customized projects, offering a complete service: from technical consultancy to final delivery."
                             
-                          data-it="this is a sample for the italian text......">
-                          ALBA S.r.l. is a company specialized in renovations, restorations and technical installations.
-                            We operate throughout Italy with an approach oriented towards quality, punctuality and customer satisfaction.
+                          data-it="ALBA S.r.l. è un’impresa specializzata in ristrutturazioni, restauri e allestimenti tecnici.
+						Operiamo in tutta Italia con un approccio orientato alla qualità, alla puntualità e alla soddisfazione del cliente.
 
-                            We support architects, companies, public and private entities in customized projects, offering a complete service: from technical consultancy to final delivery.
+						Affianchiamo architetti, imprese, enti pubblici e privati in progetti su misura, offrendo un servizio completo: dalla consulenza tecnica alla consegna finale.">
                     </p>
                 </div>
             </div>
 			<div class="fade-in delay-3"
 				style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
 				<div style="flex:1;">
-                    <p>
-                        For us, every intervention is an opportunity to build value, with attention to detail and respect for every environment.
+                    <p class= "lang"
+                    data-en="For us, every intervention is an opportunity to build value, with attention to detail and respect for every environment."
+                    data-it="Ogni intervento è per noi un’opportunità per costruire valore, con attenzione ai dettagli e rispetto per ogni ambiente.">
                     </p>
                 </div>
             </div>
         </section>
-
-        <!-- <!-- Section 2: Quality Assurance 
-        <section class="section"
-         style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
-			<h3 class="fade-in delay-2" style="color:#d87d4a;">Certified Quality & Materials</h2>
-            <div class="fade-in delay-3"
-				style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
-				<div style="flex:1;">
-                    <p>
-                        We only work with certified materials and suppliers. Each project is built
-                        to last, with quality assurance processes embedded at every phase—from
-                        planning to finishing.
-                    </p>
-                </div>
-                <img class="fade-in delay-2" src="assets\images\home\Certified_Quality_Materials.png" alt="Quality Inspection" style="width: 300px; max-width: 100%; border-radius: 8px;" />
-            </div>
-        </section>
-
-        <!-- Section 3: Focus on Businesses 
-        <section class="section"
-         style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
-			<h3 class="fade-in delay-2" style="color:#d87d4a;">Tailored Solutions for Businesses</h2>
-            <div class="fade-in delay-3"
-				style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
-				<div style="flex:1;">
-                    <p>
-                        Whether it’s a boutique storefront, a corporate headquarters, or
-                        a hospitality venue, we understand the unique needs of commercial spaces.
-                        Our tailored solutions reduce downtime and ensure operational continuity.
-                    </p>
-                </div>
-                <img class="fade-in delay-2" src="assets/images/home/TailoredSolutionsforBusinesses.png" alt="Commercial Services" style="width: 300px; max-width: 100%; border-radius: 8px;" />
-            </div>
-        </section> -->
-
-        <!-- Section 4: Nationwide Reach -->
-        <section class="section"
-         style="padding:2rem; display:flex; flex-direction:column; gap:1rem;">
-			<h3 class="fade-in delay-2" style="color:#d87d4a;">Serving All of Italy</h2>
-            <div class="fade-in delay-3"
-				style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
-				<div style="flex:1;">
-                    <p>
-                        Based in Milan, Alba S.r.l delivers renovation excellence across the country.
-                        Our network of trusted professionals allows us to serve clients in every region
-                        with the same dedication and expertise.
-                    </p>
-                </div>
-                <img class="fade-in delay-2" src="assets/images/home/ServingAllOfLombardy.png" alt="Nationwide Operations" style="width: 300px; max-width: 100%; border-radius: 8px;" />
-            </div>
-        </section>
-    </div>
-				<!-- End Home page -->
-				
+	 </div>			
     <!-- Exterior Tab -->
     <div id="exterior" class="tab-content">
 		<!-- Exterior Carousel -->
@@ -619,7 +571,7 @@
 			<!-- End Interior page -->
 			
     <div id="partners" class="tab-content">
-        <h2 style="color:#3a3a3a;"class="lang" data-en="Our Partners and Clients" data-it="I nostri partner e clienti">Our Partners and Clients</h2>
+        <h2 class="lang" style="color:#3a3a3a;" data-en="Our Partners and Clients" data-it="I nostri partner e clienti">Our Partners and Clients</h2>
         <p class="lang" 
         data-en="Alba S.r.l collaborates with leading architectural studios, real estate developers,
                 and commercial clients across Italy. We pride ourselves on long-term partnerships
@@ -855,7 +807,7 @@ initializeCarousel();
         const slide = document.createElement('div');
         slide.className = 'slide';
         const img = document.createElement('img');
-        img.src = `assets/images/exterior/Carousel/${filename}`;
+        img.src = `assets/images/exterior/Carousel/${name}`;
         slide.appendChild(img);
         extSlides.appendChild(slide);
 
@@ -888,7 +840,7 @@ initializeCarousel();
         const slide = document.createElement('div');
         slide.className = 'slide';
         const img = document.createElement('img');
-        img.src = `assets/images/interior/Carousel/${filename}`;
+        img.src = `assets/images/interior/Carousel/${name}`;
         slide.appendChild(img);
         intSlides.appendChild(slide);
 
