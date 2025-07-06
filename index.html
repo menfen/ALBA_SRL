@@ -39,8 +39,8 @@
 			@media (max-width: 768px) {
 			  /* Full-width carousel */
 			  .carousel-container {
-				width: 100%;
-				height: auto;                               /* let images dictate height */
+				width: 100vw;
+				height: auto;                /* let images dictate height */
 				margin: 1rem 0;
 			  }
 			  .slides, .slide {
@@ -76,7 +76,7 @@
 				.actions-row {
 				  display: flex;
 				  align-items: center;                        
-				  justify-content: flex-start;                    /* start all items at the left */
+				  justify-content: flex-start;           /* start all items at the left */
 				  width: 100%;
 				}
 				.slogan {
@@ -87,7 +87,7 @@
 				}
 				.social-lang {
 				  display: flex;
-				  align-items: right-side;                             /* push social+lang all the way to the right */
+				  align-items: right-side;                /* push social+lang all the way to the right */
 				  gap: 0.5rem;
 				}
 				.social-lang img {
@@ -254,10 +254,9 @@
 
         /* Carousel (Home only) */
         .carousel-container {
-            width: 100%;
-            max-width: 1000px;
+            width: 100vw;
             height: auto;
-            margin: 1rem auto;
+            margin: 0 auto;
             overflow: hidden;
             border-radius: 8px;
             position: relative;
@@ -265,7 +264,7 @@
         }
 
         .carousel {
-            width: 100%;
+            width: 100vw;
             height: 100%;
             overflow: hidden;
         }
@@ -282,7 +281,7 @@
             scroll-snap-align: start;
         }
         .slide img {
-            width: 100%;
+            width: 100vw;
             height: 100%;
             object-fit: cover;
             display: block;
@@ -458,7 +457,7 @@
                         con la stessa dedizione ed esperienza.
                     </p>
                 </div>
-                <img class="fade-in delay-2" src="assets\images\AI Generated\ServingAllofItaly.png" alt="Operazioni Nazionali" style="width: 300px; max-width: 100%; border-radius: 8px;" />
+                <img class="fade-in delay-2" src="assets/images/AI%20Generated/ServingAllofItaly.png" alt="Operazioni Nazionali" style="width: 300px; max-width: 100%; border-radius: 8px;" />
             </div>
         </section>
 	 </div>
